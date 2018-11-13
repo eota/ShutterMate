@@ -21,25 +21,9 @@ public class ImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
         imageView = findViewById(R.id.imageView);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        File pic = (File) getIntent().getExtras().get("pic.jpg");
+        imageView.setImageURI(Uri.fromFile(pic));
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        String info = data.getExtras().get("fileName").toString();
-        Bitmap bmImg = BitmapFactory.decodeFile(info);
-        imageView.setImageBitmap(bmImg);
-    }
 }
