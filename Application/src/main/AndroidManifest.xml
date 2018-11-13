@@ -30,16 +30,18 @@
         <activity
             android:name=".CameraActivity"
             android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".ImageActivity"
+            android:label="@string/title_activity_image"
+            android:theme="@style/MaterialTheme" />
+        <activity android:name=".DigitalBoardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ImageActivity"
-            android:label="@string/title_activity_image"
-            android:theme="@style/MaterialTheme"></activity>
     </application>
 
 </manifest>
