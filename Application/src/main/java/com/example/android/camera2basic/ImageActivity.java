@@ -1,5 +1,6 @@
 package com.example.android.camera2basic;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +22,10 @@ public class ImageActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         File pic = (File) getIntent().getExtras().get("pic.jpg");
         imageView.setImageURI(Uri.fromFile(pic));
+    }
+    public void board(View v){
+        Intent i = new Intent(getApplicationContext(), DigitalBoardActivity.class);
+        startActivity(i);
     }
 
 }
