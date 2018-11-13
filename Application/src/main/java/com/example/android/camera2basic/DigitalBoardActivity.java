@@ -1,9 +1,12 @@
 package com.example.android.camera2basic;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -92,7 +95,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         boardStateTextView = findViewById(R.id.boardStateTextView);
         boardState = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";  //Starting board
         //initBoard(listPieces);
-        constructBoard("r");
+        constructBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
     }
 
     protected void constructBoard(String boardState) {
@@ -101,7 +104,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         // 2) Start filling in pieces to the squares
         String word = "r";
         boardStateTextView.setText(word);
-        for (char c : word.toCharArray()) {
+        for (char c : boardState.toCharArray()) {
             switch (c) {
                 case 'r':
                     placePiece(whiteRook1, 1, 1);
@@ -119,6 +122,10 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     placePiece(whiteKing, 1, 5);
 
                 case 'p':
+                    ImageView newPawn = new ImageView(this);
+                    newPawn.setImageResource(R.drawable.chess_plt60);
+                    newPawn.setLayoutParams(new LinearLayoutCompat.LayoutParams(48,48));
+                    placePiece(newPawn, 2,1);
                     //placePiece(whitePawn1, 2, 1);
 
                 case '8': //placePiece(whiteRook1);
@@ -152,18 +159,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
         //int boardHeight = board.getHeight();
         pieceImg.setX((boardWidth/8 * (col-1)) + offset);
         pieceImg.setY((boardWidth/8 * (row-1)) + offset);
-
-    }
-
-    public void moveImageView(ImageView view, int row, int col) {
-//        TranslateAnimation animation = new TranslateAnimation(0.0f, 46f*col, 0.0f, 46f*row);
-//        animation.setDuration(700);
-//        animation.setFillAfter(true);
-//        view.startAnimation(animation);
-
-        view.setX(46*col);
-        view.setY(-46*row);
-
     }
 
     private void initBoard(ArrayList<ImageView> list) {
