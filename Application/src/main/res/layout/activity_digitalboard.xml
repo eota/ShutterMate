@@ -385,7 +385,7 @@
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="414dp" />
 
-        <Button
+=        <Button
             android:id="@+id/setBoardstateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

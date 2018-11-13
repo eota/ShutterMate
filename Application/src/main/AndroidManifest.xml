@@ -29,19 +29,31 @@
         android:theme="@style/MaterialTheme">
         <activity
             android:name=".CameraActivity"
+<<<<<<< HEAD
             android:label="@string/app_name">
         </activity>
+=======
+            android:label="ShutterMate"></activity>
+>>>>>>> e601ce09cab2cd4d7df93bb287a7e72390afd88e
         <activity
             android:name=".ImageActivity"
             android:label="@string/title_activity_image"
             android:theme="@style/MaterialTheme" />
+<<<<<<< HEAD
         <activity android:name=".DigitalBoardActivity">
+=======
+        <activity android:name=".MainActivity">
+>>>>>>> e601ce09cab2cd4d7df93bb287a7e72390afd88e
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+        <activity android:name=".DigitalBoardActivity"></activity>
+>>>>>>> e601ce09cab2cd4d7df93bb287a7e72390afd88e
     </application>
 
 </manifest>

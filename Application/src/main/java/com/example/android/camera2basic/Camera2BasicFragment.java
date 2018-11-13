@@ -944,8 +944,8 @@ public class Camera2BasicFragment extends Fragment
                 output = new FileOutputStream(mFile);
                 output.write(bytes);
                 Intent i = new Intent(mContext, ImageActivity.class);
-                i.putExtra("fileName", mFile.getAbsolutePath());
-                mContext.startActivity(i);
+                i.putExtra("pic.jpg", mFile);
+                ((Activity)mContext).startActivity(i);
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
