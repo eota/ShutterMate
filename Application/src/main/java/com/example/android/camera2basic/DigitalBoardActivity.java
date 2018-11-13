@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -74,6 +75,26 @@ public class DigitalBoardActivity extends AppCompatActivity {
         blackBishop2 = findViewById(R.id.blackBishop2);
         whiteBishop2 = findViewById(R.id.whiteBishop2);
 
+        whitePawn1 = findViewById(R.id.whitePawn1);
+        whitePawn2 = findViewById(R.id.whitePawn2);
+        whitePawn3 = findViewById(R.id.whitePawn3);
+        whitePawn4 = findViewById(R.id.whitePawn4);
+        whitePawn5 = findViewById(R.id.whitePawn5);
+        whitePawn6 = findViewById(R.id.whitePawn6);
+        whitePawn7 = findViewById(R.id.whitePawn7);
+        whitePawn8 = findViewById(R.id.whitePawn8);
+
+        blackPawn1 = findViewById(R.id.blackPawn1);
+        blackPawn2 = findViewById(R.id.blackPawn2);
+        blackPawn3 = findViewById(R.id.blackPawn3);
+        blackPawn4 = findViewById(R.id.blackPawn4);
+        blackPawn5 = findViewById(R.id.blackPawn5);
+        blackPawn6 = findViewById(R.id.blackPawn6);
+        blackPawn7 = findViewById(R.id.blackPawn7);
+        blackPawn8 = findViewById(R.id.blackPawn8);
+
+
+
         listPieces = new ArrayList<>();
         listPieces.add(blackRook1);
         listPieces.add(whiteRook1);
@@ -83,6 +104,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
         listPieces.add(whiteBishop1);
         listPieces.add(blackQueen);
         listPieces.add(whiteQueen);
+        listPieces.add(blackKing);
+        listPieces.add(whiteKing);
         listPieces.add(blackRook2);
         listPieces.add(whiteRook2);
         listPieces.add(blackKnight2);
@@ -90,12 +113,10 @@ public class DigitalBoardActivity extends AppCompatActivity {
         listPieces.add(blackBishop2);
         listPieces.add(whiteBishop2);
 
-
-
         boardStateTextView = findViewById(R.id.boardStateTextView);
         boardState = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";  //Starting board
-        //initBoard(listPieces);
-        constructBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+        initBoard();
+        //constructBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
     }
 
     protected void constructBoard(String boardState) {
@@ -105,6 +126,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         String word = "r";
         boardStateTextView.setText(word);
         for (char c : boardState.toCharArray()) {
+
             switch (c) {
                 case 'r':
                     placePiece(whiteRook1, 1, 1);
@@ -154,26 +176,64 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     protected void placePiece(ImageView pieceImg, int row, int col) {
-        int offset = 5;
+        int offset = 4;
         int boardWidth = board.getLayoutParams().width;
         //int boardHeight = board.getHeight();
         pieceImg.setX((boardWidth/8 * (col-1)) + offset);
         pieceImg.setY((boardWidth/8 * (row-1)) + offset);
     }
 
-    private void initBoard(ArrayList<ImageView> list) {
-        int col = 3;
-        int row = 3;
-            for (ImageView iv : list) {
-                placePiece(iv, row, col);
-                col++;
-                if(col > 8){
-                    row = 7;
-                    col = 1;
-                }
-                if(row > 8){
-                    break;
-                }
-            }
+    private void initBoard() {
+        placePiece(whiteRook1, 8, 1);
+        placePiece(whiteKnight1, 8, 2);
+        placePiece(whiteBishop1, 8, 3);
+        placePiece(whiteQueen, 8, 4);
+        placePiece(whiteKing, 8, 5);
+        placePiece(whiteBishop2, 8, 6);
+        placePiece(whiteKnight2, 8, 7);
+        placePiece(whiteRook2, 8, 8);
+
+        placePiece(blackRook1, 1, 1);
+        placePiece(blackKnight1, 1, 2);
+        placePiece(blackBishop1, 1, 3);
+        placePiece(blackQueen, 1, 4);
+        placePiece(blackKing, 1, 5);
+        placePiece(blackBishop2, 1, 6);
+        placePiece(blackKnight2, 1, 7);
+        placePiece(blackRook2, 1, 8);
+
+        placePiece(whitePawn1, 7, 1);
+        placePiece(whitePawn2, 7, 2);
+        placePiece(whitePawn3, 7, 3);
+        placePiece(whitePawn4, 7, 4);
+        placePiece(whitePawn5, 7, 5);
+        placePiece(whitePawn6, 7, 6);
+        placePiece(whitePawn7, 7, 7);
+        placePiece(whitePawn8, 7, 8);
+
+        placePiece(blackPawn1, 2, 1);
+        placePiece(blackPawn2, 2, 2);
+        placePiece(blackPawn3, 2, 3);
+        placePiece(blackPawn4, 2, 4);
+        placePiece(blackPawn5, 2, 5);
+        placePiece(blackPawn6, 2, 6);
+        placePiece(blackPawn7, 2, 7);
+        placePiece(blackPawn8, 2, 8);
+
+
+    }
+
+    public void boardStateDemo(View view){
+        placePiece(whitePawn4, 5, 4);
+        placePiece(blackPawn4, 4, 4);
+
+        placePiece(whiteKnight2, 6, 6);
+        placePiece(blackKnight1, 3, 3);
+
+        placePiece(whiteQueen, 5, 2);
+
+        //placePiece();
+
+
     }
 }
