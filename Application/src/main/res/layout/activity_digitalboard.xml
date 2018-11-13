@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DigitalBoardActivity">
+
+    <TextView
+        android:id="@+id/boardStateTextView"
+        android:layout_width="382dp"
+        android:layout_height="27dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="false"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/board"
+            android:layout_width="384dp"
+            android:layout_height="384dp"
+            app:srcCompat="@drawable/chess_board" />
+
+        <ImageView
+            android:id="@+id/blackRook"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_rdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/whiteBishop2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_blt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/blackBishop"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_bdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/blackKing"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_kdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/whiteRook"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_rlt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/whiteKnight"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_nlt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/whiteQueen"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_qlt60"
+            tools:layout_editor_absoluteX="193dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+        <ImageView
+            android:id="@+id/blackKnight2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_ndt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/blackKnight"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_ndt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/blackRook2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_rdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/whiteRook2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_rlt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/blackQueen"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_qdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/blackBishop2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_bdt60"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="400dp" />
+
+        <ImageView
+            android:id="@+id/whiteKnight2"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_nlt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/whiteBishop"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_blt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+        <ImageView
+            android:id="@+id/whiteKing"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationZ="5dp"
+            app:srcCompat="@drawable/chess_klt60"
+            tools:layout_editor_absoluteX="131dp"
+            tools:layout_editor_absoluteY="414dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
