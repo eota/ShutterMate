@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DigitalBoardActivity">
 
-    <TextView
-        android:id="@+id/boardStateTextView"
-        android:layout_width="382dp"
-        android:layout_height="27dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerInParent="false"
-        android:layout_centerHorizontal="false"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
@@ -385,15 +372,15 @@
             tools:layout_editor_absoluteX="131dp"
             tools:layout_editor_absoluteY="414dp" />
 
-=        <Button
-            android:id="@+id/setBoardstateBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="54dp"
-            android:onClick="boardStateDemo"
-            tools:text="Set Boardstate" />
+        <Button
+        android:id="@+id/setBoardstateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:onClick="boardStateDemo"
+        android:text="Set Boardstate" />
 
     </RelativeLayout>
 

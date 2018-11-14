@@ -17,7 +17,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     protected String boardState;
 
     protected ImageView board;
-    protected TextView boardStateTextView;
+    //protected TextView boardStateTextView;
     protected ArrayList<ImageView> listPieces;
     protected ImageView blackRook1;
     protected ImageView whiteRook1;
@@ -113,7 +113,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         listPieces.add(blackBishop2);
         listPieces.add(whiteBishop2);
 
-        boardStateTextView = findViewById(R.id.boardStateTextView);
+        //boardStateTextView = findViewById(R.id.boardStateTextView);
         boardState = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";  //Starting board
         initBoard();
         //constructBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
@@ -124,7 +124,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         // 1) Clear board
         // 2) Start filling in pieces to the squares
         String word = "r";
-        boardStateTextView.setText(word);
+        //boardStateTextView.setText(word);
         for (char c : boardState.toCharArray()) {
 
             switch (c) {
