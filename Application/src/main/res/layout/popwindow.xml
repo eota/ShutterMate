@@ -107,6 +107,17 @@
         android:onClick="wpawn"
         app:srcCompat="@drawable/chess_plt60" />
 
+    <ImageView
+        android:id="@+id/x"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginRight="45px"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:onClick="delete"
+        app:srcCompat="@drawable/redx" />
+
+
 
 
 

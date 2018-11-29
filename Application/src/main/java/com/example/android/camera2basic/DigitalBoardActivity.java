@@ -103,7 +103,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
     ImageView h6;
     ImageView h7;
     ImageView h8;
-    Hashtable<Integer, Integer> squares;
+    Hashtable<String, Integer> squareIds;
+    Hashtable<String, Character> squareChars;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("result", "in result");
@@ -111,15 +112,19 @@ public class DigitalBoardActivity extends AppCompatActivity {
             Log.d("result", "code was 1");
             if (resultCode == RESULT_OK) {
                 Log.d("result", "result ok");
-                Integer piece = data.getIntExtra("piece",0);
+                Character pieceChar = data.getCharExtra("pieceChar", '0');
+                Integer piece = data.getIntExtra("pieceInt",0);
                 Integer square = data.getIntExtra("square",0);
 
                 if(piece == 0){
-                    //do nothing
+                    wipeSquare(squareResToString(square));
+                    ImageView old = findViewById(Highlight.highlighted);
+                    old.setColorFilter(null);
+                    Highlight.setHighlight(0);
                 }
                 else{
-                    Log.d("show", "showing now");
-                    showFromId(square, piece);
+                    Log.d("show", "showing now " + pieceChar);
+                    showFromIdChar(square, pieceChar);
                     ImageView old = findViewById(Highlight.highlighted);
                     old.setColorFilter(null);
                     Highlight.setHighlight(0);
@@ -142,7 +147,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
             }
         };
 
-        squares = new Hashtable<>();
+        squareIds = new Hashtable<>();
+        squareChars = new Hashtable<>();
         a1 = findViewById(R.id.a1);
         a2 = findViewById(R.id.a2);
         a3 = findViewById(R.id.a3);
@@ -272,6 +278,49 @@ public class DigitalBoardActivity extends AppCompatActivity {
         h7.setOnClickListener(listener);
         h8.setOnClickListener(listener);
     }
+
+    public void displayFen(View v){
+        TextView fenView = findViewById(R.id.activeFen);
+        String fen = "";
+        Integer counter = 0;
+        String square;
+        //for each row
+        for(Integer row = 1; row < 9; row++){
+            //for each column
+            for(Character column = 'a'; column < 'i'; column++){
+                square = column.toString() + row;
+                //if the square contains anything
+                if(squareChars.containsKey(square)){
+                    if(squareChars.get(square)!='0') {
+                        //append and then reset the counter
+                        if (counter != 0) {
+                            fen = fen + counter;
+                            counter = 0;
+                        }
+                        //append the piece
+                        fen = fen + squareChars.get(square);
+                        Log.d("fen", "in " + square + " is " + squareChars.get(square));
+                    }
+                    else{
+                        counter++;
+                    }
+                }
+                //if the square is empty just increment the counter
+                else{
+                    counter++;
+                }
+            }
+            if(counter != 0){
+                fen = fen + counter;
+                counter = 0;
+            }
+            if(row < 8) {
+                fen = fen + '/';
+            }
+        }
+        fenView.setText(fen);
+    }
+
     public static int getResId(String resName, Class<?> c) {
 
         try {
@@ -287,6 +336,19 @@ public class DigitalBoardActivity extends AppCompatActivity {
         setFromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
     }
 
+    public void wipeSquare(String square){
+        Log.d("wipe", "wiping " + square);
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        if(squareIds.containsKey(square)){
+            if(squareIds.get(square) != 0) {
+                ImageView oldPiece = findViewById(squareIds.get(square));
+                constraintLayout.removeView(oldPiece);
+            }
+        }
+        squareChars.put(square, '0');
+        squareIds.put(square, 0);
+    }
+
     public void setFromFEN(String fen){
         String[] arr = fen.split("/");
         Character column;
@@ -298,7 +360,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
             rowChars = arr[i].split("");
             //for each piece in each row
             for (String piece : rowChars){
-                if(row == 9 || column == 'i') {
+                String square = column.toString() + row;
+                if(column == 'i') {
                     break;
                 }
                 if(piece.length() == 0){
@@ -307,16 +370,16 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 Character charPiece = piece.charAt(0);
                 //if piece is an actual piece (a letter)
                 if(Character.isLetter(charPiece)){
-                    Log.d("fen", column.toString() + row + " is " + charPiece);
-                    showFromString(column.toString() + row, charToResource(charPiece));
+                    showFromStringChar(square, charPiece);
                     column++;
                 }
                 //if piece is number
                 if(Character.isDigit(charPiece)){
-                    Log.d("fen", "skipping " + charPiece + " rows");
                     while(charPiece > '0'){
+                        wipeSquare(square);
                         column++;
                         charPiece--;
+                        square = column.toString() + row;
                     }
                 }
             }
@@ -325,6 +388,49 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    public void showFromStringChar(String squareStr, Character piece){
+        Integer square = getResId(squareStr, R.id.class);
+        showFromIdChar(square, piece);
+    }
+
+
+    public void showFromIdChar(Integer square, Character piece){
+        ImageView newPiece = new ImageView(DigitalBoardActivity.this);
+        newPiece.setImageResource(charToResource(piece));
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        ConstraintSet set = new ConstraintSet();
+        String squareStr = squareResToString(square);
+        if(squareIds.containsKey(squareStr)){
+            if(squareIds.get(squareStr) != 0) {
+                ImageView oldPiece = findViewById(squareIds.get(squareStr));
+                constraintLayout.removeView(oldPiece);
+            }
+        }
+        constraintLayout.addView(newPiece);
+        newPiece.setId(View.generateViewId());
+        squareIds.put(squareStr, newPiece.getId());
+        squareChars.put(squareStr, piece);
+        set.clone(constraintLayout);
+        set.constrainHeight(newPiece.getId(),150);
+        set.constrainWidth(newPiece.getId(),150);
+        set.connect(newPiece.getId(), ConstraintSet.TOP, square, ConstraintSet.TOP, 0);
+        set.connect(newPiece.getId(), ConstraintSet.RIGHT, square, ConstraintSet.RIGHT, 5);
+        set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
+        set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
+        set.applyTo(constraintLayout);
+    }
+    
+    public Integer squareOnClick(View v) {
+        ImageView square = (ImageView) v;
+        square.setColorFilter(Color.argb(255, 255, 255, 255));
+        Integer highlighted = Highlight.getHighlight();
+        if (highlighted != 0){
+            ImageView old = findViewById(highlighted);
+            old.setColorFilter(null);
+        }
+        return square.getId();
     }
 
     public Integer charToResource(Character piece){
@@ -358,63 +464,138 @@ public class DigitalBoardActivity extends AppCompatActivity {
         }
     }
 
-    public void showFromString(String squareStr, Integer piece){
-        Integer square = getResId(squareStr, R.id.class);
-        ImageView newPiece = new ImageView(DigitalBoardActivity.this);
-        newPiece.setImageResource(piece);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
-        ConstraintSet set = new ConstraintSet();
-        if(squares.containsKey(square)){
-            if(squares.get(square) != 0) {
-                ImageView oldPiece = findViewById(squares.get(square));
-                constraintLayout.removeView(oldPiece);
-            }
+    public String squareResToString(Integer square){
+        switch (square){
+            case R.id.a1:
+                return "a1";
+            case R.id.a2:
+                return "a2";
+            case R.id.a3:
+                return "a3";
+            case R.id.a4:
+                return "a4";
+            case R.id.a5:
+                return "a5";
+            case R.id.a6:
+                return "a6";
+            case R.id.a7:
+                return "a7";
+            case R.id.a8:
+                return "a8";
+            case R.id.b1:
+                return "b1";
+            case R.id.b2:
+                return "b2";
+            case R.id.b3:
+                return "b3";
+            case R.id.b4:
+                return "b4";
+            case R.id.b5:
+                return "b5";
+            case R.id.b6:
+                return "b6";
+            case R.id.b7:
+                return "b7";
+            case R.id.b8:
+                return "b8";
+            case R.id.c1:
+                return "c1";
+            case R.id.c2:
+                return "c2";
+            case R.id.c3:
+                return "c3";
+            case R.id.c4:
+                return "c4";
+            case R.id.c5:
+                return "c5";
+            case R.id.c6:
+                return "c6";
+            case R.id.c7:
+                return "c7";
+            case R.id.c8:
+                return "c8";
+            case R.id.d1:
+                return "d1";
+            case R.id.d2:
+                return "d2";
+            case R.id.d3:
+                return "d3";
+            case R.id.d4:
+                return "d4";
+            case R.id.d5:
+                return "d5";
+            case R.id.d6:
+                return "d6";
+            case R.id.d7:
+                return "d7";
+            case R.id.d8:
+                return "d8";
+            case R.id.e1:
+                return "e1";
+            case R.id.e2:
+                return "e2";
+            case R.id.e3:
+                return "e3";
+            case R.id.e4:
+                return "e4";
+            case R.id.e5:
+                return "e5";
+            case R.id.e6:
+                return "e6";
+            case R.id.e7:
+                return "e7";
+            case R.id.e8:
+                return "e8";
+            case R.id.f1:
+                return "f1";
+            case R.id.f2:
+                return "f2";
+            case R.id.f3:
+                return "f3";
+            case R.id.f4:
+                return "f4";
+            case R.id.f5:
+                return "f5";
+            case R.id.f6:
+                return "f6";
+            case R.id.f7:
+                return "f7";
+            case R.id.f8:
+                return "f8";
+            case R.id.g1:
+                return "g1";
+            case R.id.g2:
+                return "g2";
+            case R.id.g3:
+                return "g3";
+            case R.id.g4:
+                return "g4";
+            case R.id.g5:
+                return "g5";
+            case R.id.g6:
+                return "g6";
+            case R.id.g7:
+                return "g7";
+            case R.id.g8:
+                return "g8";
+            case R.id.h1:
+                return "h1";
+            case R.id.h2:
+                return "h2";
+            case R.id.h3:
+                return "h3";
+            case R.id.h4:
+                return "h4";
+            case R.id.h5:
+                return "h5";
+            case R.id.h6:
+                return "h6";
+            case R.id.h7:
+                return "h7";
+            case R.id.h8:
+                return "h8";
+            default:
+                return "null";
         }
-        constraintLayout.addView(newPiece);
-        newPiece.setId(View.generateViewId());
-        squares.put(square, newPiece.getId());
-        set.clone(constraintLayout);
-        set.constrainHeight(newPiece.getId(),150);
-        set.constrainWidth(newPiece.getId(),150);
-        set.connect(newPiece.getId(), ConstraintSet.TOP, square, ConstraintSet.TOP, 0);
-        set.connect(newPiece.getId(), ConstraintSet.RIGHT, square, ConstraintSet.RIGHT, 5);
-        set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
-        set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
-        set.applyTo(constraintLayout);
-    }
-
-    public void showFromId(Integer square, Integer piece){
-        ImageView newPiece = new ImageView(DigitalBoardActivity.this);
-        newPiece.setImageResource(piece);
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
-        ConstraintSet set = new ConstraintSet();
-        if(squares.containsKey(square)){
-            if(squares.get(square) != 0) {
-                ImageView oldPiece = findViewById(squares.get(square));
-                constraintLayout.removeView(oldPiece);
-            }
-        }
-        constraintLayout.addView(newPiece);
-        newPiece.setId(View.generateViewId());
-        squares.put(square, newPiece.getId());
-        set.clone(constraintLayout);
-        set.constrainHeight(newPiece.getId(),150);
-        set.constrainWidth(newPiece.getId(),150);
-        set.connect(newPiece.getId(), ConstraintSet.TOP, square, ConstraintSet.TOP, 0);
-        set.connect(newPiece.getId(), ConstraintSet.RIGHT, square, ConstraintSet.RIGHT, 5);
-        set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
-        set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
-        set.applyTo(constraintLayout);
-    }
-
-    public Integer squareOnClick(View v) {
-        ImageView square = (ImageView) v;
-        square.setColorFilter(Color.argb(255, 255, 255, 255));
-        Integer highlighted = Highlight.getHighlight();
-        if (highlighted != 0){
-            ImageView old = findViewById(highlighted);
-            old.setColorFilter(null);
-        }
-        return square.getId();
     }
 }
