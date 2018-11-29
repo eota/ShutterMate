@@ -1,239 +1,420 @@
 package com.example.android.camera2basic;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.net.Uri;
+import android.provider.ContactsContract;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import static java.sql.Types.NULL;
+class Highlight {
+    public static Integer highlighted = 0;
+
+    static public void setHighlight(Integer square){
+        highlighted = square;
+    }
+
+    static public Integer getHighlight(){
+        return highlighted;
+    }
+}
 
 public class DigitalBoardActivity extends AppCompatActivity {
+    ImageView a1;
+    ImageView a2;
+    ImageView a3;
+    ImageView a4;
+    ImageView a5;
+    ImageView a6;
+    ImageView a7;
+    ImageView a8;
+    ImageView b1;
+    ImageView b2;
+    ImageView b3;
+    ImageView b4;
+    ImageView b5;
+    ImageView b6;
+    ImageView b7;
+    ImageView b8;
+    ImageView c1;
+    ImageView c2;
+    ImageView c3;
+    ImageView c4;
+    ImageView c5;
+    ImageView c6;
+    ImageView c7;
+    ImageView c8;
+    ImageView d1;
+    ImageView d2;
+    ImageView d3;
+    ImageView d4;
+    ImageView d5;
+    ImageView d6;
+    ImageView d7;
+    ImageView d8;
+    ImageView e1;
+    ImageView e2;
+    ImageView e3;
+    ImageView e4;
+    ImageView e5;
+    ImageView e6;
+    ImageView e7;
+    ImageView e8;
+    ImageView f1;
+    ImageView f2;
+    ImageView f3;
+    ImageView f4;
+    ImageView f5;
+    ImageView f6;
+    ImageView f7;
+    ImageView f8;
+    ImageView g1;
+    ImageView g2;
+    ImageView g3;
+    ImageView g4;
+    ImageView g5;
+    ImageView g6;
+    ImageView g7;
+    ImageView g8;
+    ImageView h1;
+    ImageView h2;
+    ImageView h3;
+    ImageView h4;
+    ImageView h5;
+    ImageView h6;
+    ImageView h7;
+    ImageView h8;
+    Hashtable<Integer, Integer> squares;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("result", "in result");
+        if (requestCode == 1) {
+            Log.d("result", "code was 1");
+            if (resultCode == RESULT_OK) {
+                Log.d("result", "result ok");
+                Integer piece = data.getIntExtra("piece",0);
+                Integer square = data.getIntExtra("square",0);
 
-    protected String boardState;
-
-    protected ImageView board;
-    //protected TextView boardStateTextView;
-    protected ArrayList<ImageView> listPieces;
-    protected ImageView blackRook1;
-    protected ImageView whiteRook1;
-    protected ImageView blackRook2;
-    protected ImageView whiteRook2;
-    protected ImageView blackKnight1;
-    protected ImageView whiteKnight1;
-    protected ImageView blackKnight2;
-    protected ImageView whiteKnight2;
-    protected ImageView blackBishop1;
-    protected ImageView whiteBishop1;
-    protected ImageView blackBishop2;
-    protected ImageView whiteBishop2;
-    protected ImageView blackQueen;
-    protected ImageView whiteQueen;
-    protected ImageView blackKing;
-    protected ImageView whiteKing;
-    protected ImageView blackPawn1;
-    protected ImageView whitePawn1;
-    protected ImageView blackPawn2;
-    protected ImageView whitePawn2;
-    protected ImageView blackPawn3;
-    protected ImageView whitePawn3;
-    protected ImageView blackPawn4;
-    protected ImageView whitePawn4;
-    protected ImageView blackPawn5;
-    protected ImageView whitePawn5;
-    protected ImageView blackPawn6;
-    protected ImageView whitePawn6;
-    protected ImageView blackPawn7;
-    protected ImageView whitePawn7;
-    protected ImageView blackPawn8;
-    protected ImageView whitePawn8;
-
-
+                if(piece == 0){
+                    //do nothing
+                }
+                else{
+                    Log.d("show", "showing now");
+                    showFromId(square, piece);
+                    ImageView old = findViewById(Highlight.highlighted);
+                    old.setColorFilter(null);
+                    Highlight.setHighlight(0);
+                }
+            }
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_digitalboard);
-        board = findViewById(R.id.board);
-        blackRook1 = findViewById(R.id.blackRook);
-        whiteRook1 = findViewById(R.id.whiteRook);
-        blackKnight1 = findViewById(R.id.blackKnight);
-        whiteKnight1 = findViewById(R.id.whiteKnight);
-        blackBishop1 = findViewById(R.id.blackBishop);
-        whiteBishop1 = findViewById(R.id.whiteBishop);
-        blackQueen = findViewById(R.id.blackQueen);
-        whiteQueen = findViewById(R.id.whiteQueen);
-        blackKing = findViewById(R.id.blackKing);
-        whiteKing = findViewById(R.id.whiteKing);
-        blackRook2 = findViewById(R.id.blackRook2);
-        whiteRook2 = findViewById(R.id.whiteRook2);
-        blackKnight2 = findViewById(R.id.blackKnight2);
-        whiteKnight2 = findViewById(R.id.whiteKnight2);
-        blackBishop2 = findViewById(R.id.blackBishop2);
-        whiteBishop2 = findViewById(R.id.whiteBishop2);
+        setContentView(R.layout.activity_digital_board);
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer square = squareOnClick(view);
+                Highlight.setHighlight(square);
+                Intent i = new Intent(DigitalBoardActivity.this, Pop.class);
+                i.putExtra("square", square);
+                startActivityForResult(i, 1);
+            }
+        };
 
-        whitePawn1 = findViewById(R.id.whitePawn1);
-        whitePawn2 = findViewById(R.id.whitePawn2);
-        whitePawn3 = findViewById(R.id.whitePawn3);
-        whitePawn4 = findViewById(R.id.whitePawn4);
-        whitePawn5 = findViewById(R.id.whitePawn5);
-        whitePawn6 = findViewById(R.id.whitePawn6);
-        whitePawn7 = findViewById(R.id.whitePawn7);
-        whitePawn8 = findViewById(R.id.whitePawn8);
+        squares = new Hashtable<>();
+        a1 = findViewById(R.id.a1);
+        a2 = findViewById(R.id.a2);
+        a3 = findViewById(R.id.a3);
+        a4 = findViewById(R.id.a4);
+        a5 = findViewById(R.id.a5);
+        a6 = findViewById(R.id.a6);
+        a7 = findViewById(R.id.a7);
+        a8 = findViewById(R.id.a8);
+        b1 = findViewById(R.id.b1);
+        b2 = findViewById(R.id.b2);
+        b3 = findViewById(R.id.b3);
+        b4 = findViewById(R.id.b4);
+        b5 = findViewById(R.id.b5);
+        b6 = findViewById(R.id.b6);
+        b7 = findViewById(R.id.b7);
+        b8 = findViewById(R.id.b8);
+        c1 = findViewById(R.id.c1);
+        c2 = findViewById(R.id.c2);
+        c3 = findViewById(R.id.c3);
+        c4 = findViewById(R.id.c4);
+        c5 = findViewById(R.id.c5);
+        c6 = findViewById(R.id.c6);
+        c7 = findViewById(R.id.c7);
+        c8 = findViewById(R.id.c8);
+        d1 = findViewById(R.id.d1);
+        d2 = findViewById(R.id.d2);
+        d3 = findViewById(R.id.d3);
+        d4 = findViewById(R.id.d4);
+        d5 = findViewById(R.id.d5);
+        d6 = findViewById(R.id.d6);
+        d7 = findViewById(R.id.d7);
+        d8 = findViewById(R.id.d8);
+        e1 = findViewById(R.id.e1);
+        e2 = findViewById(R.id.e2);
+        e3 = findViewById(R.id.e3);
+        e4 = findViewById(R.id.e4);
+        e5 = findViewById(R.id.e5);
+        e6 = findViewById(R.id.e6);
+        e7 = findViewById(R.id.e7);
+        e8 = findViewById(R.id.e8);
+        f1 = findViewById(R.id.f1);
+        f2 = findViewById(R.id.f2);
+        f3 = findViewById(R.id.f3);
+        f4 = findViewById(R.id.f4);
+        f5 = findViewById(R.id.f5);
+        f6 = findViewById(R.id.f6);
+        f7 = findViewById(R.id.f7);
+        f8 = findViewById(R.id.f8);
+        g1 = findViewById(R.id.g1);
+        g2 = findViewById(R.id.g2);
+        g3 = findViewById(R.id.g3);
+        g4 = findViewById(R.id.g4);
+        g5 = findViewById(R.id.g5);
+        g6 = findViewById(R.id.g6);
+        g7 = findViewById(R.id.g7);
+        g8 = findViewById(R.id.g8);
+        h1 = findViewById(R.id.h1);
+        h2 = findViewById(R.id.h2);
+        h3 = findViewById(R.id.h3);
+        h4 = findViewById(R.id.h4);
+        h5 = findViewById(R.id.h5);
+        h6 = findViewById(R.id.h6);
+        h7 = findViewById(R.id.h7);
+        h8 = findViewById(R.id.h8);
+        a1.setOnClickListener(listener);
+        a2.setOnClickListener(listener);
+        a3.setOnClickListener(listener);
+        a4.setOnClickListener(listener);
+        a5.setOnClickListener(listener);
+        a6.setOnClickListener(listener);
+        a7.setOnClickListener(listener);
+        a8.setOnClickListener(listener);
+        b1.setOnClickListener(listener);
+        b2.setOnClickListener(listener);
+        b3.setOnClickListener(listener);
+        b4.setOnClickListener(listener);
+        b5.setOnClickListener(listener);
+        b6.setOnClickListener(listener);
+        b7.setOnClickListener(listener);
+        b8.setOnClickListener(listener);
+        c1.setOnClickListener(listener);
+        c2.setOnClickListener(listener);
+        c3.setOnClickListener(listener);
+        c4.setOnClickListener(listener);
+        c5.setOnClickListener(listener);
+        c6.setOnClickListener(listener);
+        c7.setOnClickListener(listener);
+        c8.setOnClickListener(listener);
+        d1.setOnClickListener(listener);
+        d2.setOnClickListener(listener);
+        d3.setOnClickListener(listener);
+        d4.setOnClickListener(listener);
+        d5.setOnClickListener(listener);
+        d6.setOnClickListener(listener);
+        d7.setOnClickListener(listener);
+        d8.setOnClickListener(listener);
+        e1.setOnClickListener(listener);
+        e2.setOnClickListener(listener);
+        e3.setOnClickListener(listener);
+        e4.setOnClickListener(listener);
+        e5.setOnClickListener(listener);
+        e6.setOnClickListener(listener);
+        e7.setOnClickListener(listener);
+        e8.setOnClickListener(listener);
+        f1.setOnClickListener(listener);
+        f2.setOnClickListener(listener);
+        f3.setOnClickListener(listener);
+        f4.setOnClickListener(listener);
+        f5.setOnClickListener(listener);
+        f6.setOnClickListener(listener);
+        f7.setOnClickListener(listener);
+        f8.setOnClickListener(listener);
+        g1.setOnClickListener(listener);
+        g2.setOnClickListener(listener);
+        g3.setOnClickListener(listener);
+        g4.setOnClickListener(listener);
+        g5.setOnClickListener(listener);
+        g6.setOnClickListener(listener);
+        g7.setOnClickListener(listener);
+        g8.setOnClickListener(listener);
+        h1.setOnClickListener(listener);
+        h2.setOnClickListener(listener);
+        h3.setOnClickListener(listener);
+        h4.setOnClickListener(listener);
+        h5.setOnClickListener(listener);
+        h6.setOnClickListener(listener);
+        h7.setOnClickListener(listener);
+        h8.setOnClickListener(listener);
+    }
+    public static int getResId(String resName, Class<?> c) {
 
-        blackPawn1 = findViewById(R.id.blackPawn1);
-        blackPawn2 = findViewById(R.id.blackPawn2);
-        blackPawn3 = findViewById(R.id.blackPawn3);
-        blackPawn4 = findViewById(R.id.blackPawn4);
-        blackPawn5 = findViewById(R.id.blackPawn5);
-        blackPawn6 = findViewById(R.id.blackPawn6);
-        blackPawn7 = findViewById(R.id.blackPawn7);
-        blackPawn8 = findViewById(R.id.blackPawn8);
-
-
-
-        listPieces = new ArrayList<>();
-        listPieces.add(blackRook1);
-        listPieces.add(whiteRook1);
-        listPieces.add(blackKnight1);
-        listPieces.add(whiteKnight1);
-        listPieces.add(blackBishop1);
-        listPieces.add(whiteBishop1);
-        listPieces.add(blackQueen);
-        listPieces.add(whiteQueen);
-        listPieces.add(blackKing);
-        listPieces.add(whiteKing);
-        listPieces.add(blackRook2);
-        listPieces.add(whiteRook2);
-        listPieces.add(blackKnight2);
-        listPieces.add(whiteKnight2);
-        listPieces.add(blackBishop2);
-        listPieces.add(whiteBishop2);
-
-        //boardStateTextView = findViewById(R.id.boardStateTextView);
-        boardState = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";  //Starting board
-        initBoard();
-        //constructBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
-    protected void constructBoard(String boardState) {
-        // Given boardState
-        // 1) Clear board
-        // 2) Start filling in pieces to the squares
-        String word = "r";
-        //boardStateTextView.setText(word);
-        for (char c : boardState.toCharArray()) {
+    public void set(View view){
+        setFromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    }
 
-            switch (c) {
-                case 'r':
-                    placePiece(whiteRook1, 1, 1);
-
-                case 'n':
-                    placePiece(whiteKnight1, 1, 2);
-
-                case 'b':
-                    placePiece(whiteBishop1, 1, 3);
-
-                case 'q':
-                    placePiece(whiteQueen, 1, 4);
-
-                case 'k':
-                    placePiece(whiteKing, 1, 5);
-
-                case 'p':
-                    ImageView newPawn = new ImageView(this);
-                    newPawn.setImageResource(R.drawable.chess_plt60);
-                    newPawn.setLayoutParams(new LinearLayoutCompat.LayoutParams(48,48));
-                    placePiece(newPawn, 2,1);
-                    //placePiece(whitePawn1, 2, 1);
-
-                case '8': //placePiece(whiteRook1);
-
-                case 'R':
-                    placePiece(blackRook1, 8, 1);
-
-                case 'N':
-                    placePiece(blackKnight1, 8, 2);
-
-                case 'B':
-                    placePiece(blackBishop1, 8, 3);
-
-                case 'Q':
-                    placePiece(blackQueen, 8, 4);
-
-                case 'K':
-                    placePiece(blackKing, 8, 5);
-
-                case 'P': //placePiece(blackPawn1);
-
-                default:
-                    //placePiece(whiteRook1, 1, 1);
+    public void setFromFEN(String fen){
+        String[] arr = fen.split("/");
+        Character column;
+        String[] rowChars;
+        Integer row = 1;
+        //for each row in the fen code
+        for (int i = 0; i < arr.length; i++){
+            column = 'a';
+            rowChars = arr[i].split("");
+            //for each piece in each row
+            for (String piece : rowChars){
+                if(row == 9 || column == 'i') {
+                    break;
+                }
+                if(piece.length() == 0){
+                    continue;
+                }
+                Character charPiece = piece.charAt(0);
+                //if piece is an actual piece (a letter)
+                if(Character.isLetter(charPiece)){
+                    Log.d("fen", column.toString() + row + " is " + charPiece);
+                    showFromString(column.toString() + row, charToResource(charPiece));
+                    column++;
+                }
+                //if piece is number
+                if(Character.isDigit(charPiece)){
+                    Log.d("fen", "skipping " + charPiece + " rows");
+                    while(charPiece > '0'){
+                        column++;
+                        charPiece--;
+                    }
+                }
+            }
+            row++;
+            if(row == 9) {
+                break;
             }
         }
     }
 
-    protected void placePiece(ImageView pieceImg, int row, int col) {
-        int offset = 4;
-        int boardWidth = board.getLayoutParams().width;
-        //int boardHeight = board.getHeight();
-        pieceImg.setX((boardWidth/8 * (col-1)) + offset);
-        pieceImg.setY((boardWidth/8 * (row-1)) + offset);
+    public Integer charToResource(Character piece){
+        switch (piece){
+            case 'r':
+                return R.drawable.chess_rdt60;
+            case 'n':
+                return R.drawable.chess_ndt60;
+            case 'b':
+                return R.drawable.chess_bdt60;
+            case 'q':
+                return R.drawable.chess_qdt60;
+            case 'k':
+                return R.drawable.chess_kdt60;
+            case 'p':
+                return R.drawable.chess_pdt60;
+            case 'R':
+                return R.drawable.chess_rlt60;
+            case 'N':
+                return R.drawable.chess_nlt60;
+            case 'B':
+                return R.drawable.chess_blt60;
+            case 'Q':
+                return R.drawable.chess_qlt60;
+            case 'K':
+                return R.drawable.chess_klt60;
+            case 'P':
+                return R.drawable.chess_plt60;
+            default:
+                return 0;
+        }
     }
 
-    private void initBoard() {
-        placePiece(whiteRook1, 8, 1);
-        placePiece(whiteKnight1, 8, 2);
-        placePiece(whiteBishop1, 8, 3);
-        placePiece(whiteQueen, 8, 4);
-        placePiece(whiteKing, 8, 5);
-        placePiece(whiteBishop2, 8, 6);
-        placePiece(whiteKnight2, 8, 7);
-        placePiece(whiteRook2, 8, 8);
-
-        placePiece(blackRook1, 1, 1);
-        placePiece(blackKnight1, 1, 2);
-        placePiece(blackBishop1, 1, 3);
-        placePiece(blackQueen, 1, 4);
-        placePiece(blackKing, 1, 5);
-        placePiece(blackBishop2, 1, 6);
-        placePiece(blackKnight2, 1, 7);
-        placePiece(blackRook2, 1, 8);
-
-        placePiece(whitePawn1, 7, 1);
-        placePiece(whitePawn2, 7, 2);
-        placePiece(whitePawn3, 7, 3);
-        placePiece(whitePawn4, 7, 4);
-        placePiece(whitePawn5, 7, 5);
-        placePiece(whitePawn6, 7, 6);
-        placePiece(whitePawn7, 7, 7);
-        placePiece(whitePawn8, 7, 8);
-
-        placePiece(blackPawn1, 2, 1);
-        placePiece(blackPawn2, 2, 2);
-        placePiece(blackPawn3, 2, 3);
-        placePiece(blackPawn4, 2, 4);
-        placePiece(blackPawn5, 2, 5);
-        placePiece(blackPawn6, 2, 6);
-        placePiece(blackPawn7, 2, 7);
-        placePiece(blackPawn8, 2, 8);
-
-
+    public void showFromString(String squareStr, Integer piece){
+        Integer square = getResId(squareStr, R.id.class);
+        ImageView newPiece = new ImageView(DigitalBoardActivity.this);
+        newPiece.setImageResource(piece);
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        ConstraintSet set = new ConstraintSet();
+        if(squares.containsKey(square)){
+            if(squares.get(square) != 0) {
+                ImageView oldPiece = findViewById(squares.get(square));
+                constraintLayout.removeView(oldPiece);
+            }
+        }
+        constraintLayout.addView(newPiece);
+        newPiece.setId(View.generateViewId());
+        squares.put(square, newPiece.getId());
+        set.clone(constraintLayout);
+        set.constrainHeight(newPiece.getId(),150);
+        set.constrainWidth(newPiece.getId(),150);
+        set.connect(newPiece.getId(), ConstraintSet.TOP, square, ConstraintSet.TOP, 0);
+        set.connect(newPiece.getId(), ConstraintSet.RIGHT, square, ConstraintSet.RIGHT, 5);
+        set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
+        set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
+        set.applyTo(constraintLayout);
     }
 
-    public void boardStateDemo(View view){
-        placePiece(whitePawn4, 5, 4);
-        placePiece(blackPawn4, 4, 4);
+    public void showFromId(Integer square, Integer piece){
+        ImageView newPiece = new ImageView(DigitalBoardActivity.this);
+        newPiece.setImageResource(piece);
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        ConstraintSet set = new ConstraintSet();
+        if(squares.containsKey(square)){
+            if(squares.get(square) != 0) {
+                ImageView oldPiece = findViewById(squares.get(square));
+                constraintLayout.removeView(oldPiece);
+            }
+        }
+        constraintLayout.addView(newPiece);
+        newPiece.setId(View.generateViewId());
+        squares.put(square, newPiece.getId());
+        set.clone(constraintLayout);
+        set.constrainHeight(newPiece.getId(),150);
+        set.constrainWidth(newPiece.getId(),150);
+        set.connect(newPiece.getId(), ConstraintSet.TOP, square, ConstraintSet.TOP, 0);
+        set.connect(newPiece.getId(), ConstraintSet.RIGHT, square, ConstraintSet.RIGHT, 5);
+        set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
+        set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
+        set.applyTo(constraintLayout);
+    }
 
-        placePiece(whiteKnight2, 6, 6);
-        placePiece(blackKnight1, 3, 3);
-
-        placePiece(whiteQueen, 5, 2);
-
-        //placePiece();
-
-
+    public Integer squareOnClick(View v) {
+        ImageView square = (ImageView) v;
+        square.setColorFilter(Color.argb(255, 255, 255, 255));
+        Integer highlighted = Highlight.getHighlight();
+        if (highlighted != 0){
+            ImageView old = findViewById(highlighted);
+            old.setColorFilter(null);
+        }
+        return square.getId();
     }
 }

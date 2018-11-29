@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/brook"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="brook"
+        app:srcCompat="@drawable/chess_rdt60" />
+
+    <ImageView
+        android:id="@+id/bknight"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/brook"
+        android:onClick="bknight"
+        app:srcCompat="@drawable/chess_ndt60" />
+
+    <ImageView
+        android:id="@+id/bbishop"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/bknight"
+        android:onClick="bbishop"
+        app:srcCompat="@drawable/chess_bdt60" />
+
+    <ImageView
+        android:id="@+id/bqueen"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/bbishop"
+        android:onClick="bqueen"
+        app:srcCompat="@drawable/chess_qdt60" />
+
+    <ImageView
+        android:id="@+id/bking"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/bqueen"
+        android:onClick="bking"
+        app:srcCompat="@drawable/chess_kdt60" />
+
+    <ImageView
+        android:id="@+id/bpawn"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/bking"
+        android:onClick="bpawn"
+        app:srcCompat="@drawable/chess_pdt60" />
+
+    <ImageView
+        android:id="@+id/wrook"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="wrook"
+        app:srcCompat="@drawable/chess_rlt60" />
+
+    <ImageView
+        android:id="@+id/wknight"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/wrook"
+        android:layout_alignParentBottom="true"
+        android:onClick="wknight"
+        app:srcCompat="@drawable/chess_nlt60" />
+
+    <ImageView
+        android:id="@+id/wbishop"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/wknight"
+        android:layout_alignParentBottom="true"
+        android:onClick="wbishop"
+        app:srcCompat="@drawable/chess_blt60" />
+
+    <ImageView
+        android:id="@+id/wqueen"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/wbishop"
+        android:layout_alignParentBottom="true"
+        android:onClick="wqueen"
+        app:srcCompat="@drawable/chess_qlt60" />
+
+    <ImageView
+        android:id="@+id/wking"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/wqueen"
+        android:layout_alignParentBottom="true"
+        android:onClick="wking"
+        app:srcCompat="@drawable/chess_klt60" />
+
+    <ImageView
+        android:id="@+id/wpawn"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_toRightOf="@id/wking"
+        android:layout_alignParentBottom="true"
+        android:onClick="wpawn"
+        app:srcCompat="@drawable/chess_plt60" />
+
+
+
+
+</RelativeLayout>
