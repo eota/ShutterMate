@@ -33,14 +33,14 @@
             android:label="@string/title_activity_image"
             android:theme="@style/MaterialTheme" />
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".DigitalBoardActivity"></activity>
-        <activity android:name=".WebViewActivity">
+        <activity android:name=".DigitalBoardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WebViewActivity"></activity>
     </application>
 
 </manifest>

@@ -382,6 +382,17 @@
         android:onClick="boardStateDemo"
         android:text="Set Boardstate" />
 
+        <Button
+            android:id="@+id/webViewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="127dp"
+            android:layout_marginBottom="116dp"
+            android:onClick="openWebViewPressed"
+            android:text="Find Next Move" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
