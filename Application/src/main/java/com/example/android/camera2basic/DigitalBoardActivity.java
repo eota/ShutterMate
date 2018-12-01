@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -144,10 +146,17 @@ public class DigitalBoardActivity extends AppCompatActivity {
         set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
         set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
         set.applyTo(constraintLayout);
+        startFadeInAnimation(newPiece, newPiece); //Comment to disable fade-in
     }
 
     public void a1click(View view){
         ImageView square = findViewById(R.id.a1);
         square.setColorFilter(Color.argb(255, 255, 255, 255));
+    }
+
+    public void startFadeInAnimation(View view, ImageView iv) {
+        View img = iv;
+        Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_animation_short);
+        img.startAnimation(startAnimation);
     }
 }
