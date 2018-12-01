@@ -1,5 +1,6 @@
 package com.example.android.camera2basic;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.provider.ContactsContract;
@@ -158,5 +159,11 @@ public class DigitalBoardActivity extends AppCompatActivity {
         View img = iv;
         Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_animation_short);
         img.startAnimation(startAnimation);
+    }
+
+    public void getNextMovePressed(View view){
+        // Call StockfishEngine.go(FEN_CODE)
+        // Create textviews to display results, set results
+        //
     }
 }
