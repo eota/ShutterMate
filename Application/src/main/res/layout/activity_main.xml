@@ -6,14 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chess" />
+
+    <TextView
+        android:id="@+id/TapUserMessageTxt"
+        android:layout_width="325dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="353dp"
+        android:layout_marginBottom="319dp"
+        android:alpha="0.8"
+        android:clickable="false"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Tap to Capture Board"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="32sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goCameraBtn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:alpha="0"
         android:onClick="camera"
         android:text="Camera"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,12 +55,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/chess"
-        tools:layout_editor_absoluteY="0dp" />
 </android.support.constraint.ConstraintLayout>
