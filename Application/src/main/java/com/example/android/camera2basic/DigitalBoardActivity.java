@@ -1,6 +1,5 @@
 package com.example.android.camera2basic;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.provider.ContactsContract;
@@ -18,6 +17,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -25,10 +32,12 @@ import java.util.Hashtable;
 
 import static java.sql.Types.NULL;
 
+
 public class DigitalBoardActivity extends AppCompatActivity {
     ImageView a1br;
     ImageView a1bn;
     ImageView a1bb;
+    String path;
     Hashtable<String, Integer> squares;
 
     @Override
@@ -36,6 +45,9 @@ public class DigitalBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_board);
         squares = new Hashtable<>();
+        TextView mTextView = findViewById(R.id.fenView);
+        path = getIntent().getExtras().getString("path");
+        mTextView.setText(path);
     }
 
     public static int getResId(String resName, Class<?> c) {
@@ -51,6 +63,61 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     public void set(View view){
         setFromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    }
+
+    public void sendImg(View v){
+        path = getIntent().getExtras().getString("path");
+        final TextView mTextView = findViewById(R.id.fenView);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://98.234.140.213/digitize?img=@";
+        url = url + path;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void getBestMove(View v){
+        final TextView mTextView = findViewById(R.id.fenView);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://98.234.140.213/nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w - - 0 1";
+        //url = url + "?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 
     public void setFromFEN(String fen){
@@ -159,11 +226,5 @@ public class DigitalBoardActivity extends AppCompatActivity {
         View img = iv;
         Animation startAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_animation_short);
         img.startAnimation(startAnimation);
-    }
-
-    public void getNextMovePressed(View view){
-        // Call StockfishEngine.go(FEN_CODE)
-        // Create textviews to display results, set results
-        //
     }
 }
