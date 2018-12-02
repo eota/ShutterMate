@@ -6,6 +6,16 @@
     android:id="@+id/constraintLayout"
     tools:context=".DigitalBoardActivity">
 
+    <Button
+        android:id="@+id/cameraBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/camera_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.example.android.camera2basic.LineView
         android:id="@+id/lineView"
         android:layout_width="match_parent"
@@ -18,11 +28,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="528dp"
         android:onClick="set"
         android:text="Set"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.921"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/board" />
 
@@ -604,14 +615,102 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="FEN"
         android:onClick="displayFen"
+        android:text="FEN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.015" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottomConstraint"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/fenImg"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/NextMoveBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/fen_" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="8/8/8/8/8/8/8/8"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/fenImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cpImg"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="65dp"
+            app:layout_constraintStart_toEndOf="@+id/PonderBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cp_" />
+
+        <TextView
+            android:id="@+id/cpTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="65dp"
+            android:text="3.32"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/cpImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/evaluateBtn"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            android:background="@drawable/evaluate_board"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/PonderBtn"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ponder"
+            android:text="\n\ne2e4"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/NextMoveBtn" />
+
+        <Button
+            android:id="@+id/NextMoveBtn"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/next_move"
+            android:text="\n\nd7d5"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
 
