@@ -1,5 +1,6 @@
 package com.example.android.camera2basic;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -19,6 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -321,6 +329,47 @@ public class DigitalBoardActivity extends AppCompatActivity {
         fenView.setText(fen);
     }
 
+    public String getFen(){
+        String fen = "";
+        Integer counter = 0;
+        String square;
+        //for each row
+        for(Integer row = 1; row < 9; row++){
+            //for each column
+            for(Character column = 'a'; column < 'i'; column++){
+                square = column.toString() + row;
+                //if the square contains anything
+                if(squareChars.containsKey(square)){
+                    if(squareChars.get(square)!='0') {
+                        //append and then reset the counter
+                        if (counter != 0) {
+                            fen = fen + counter;
+                            counter = 0;
+                        }
+                        //append the piece
+                        fen = fen + squareChars.get(square);
+                        Log.d("fen", "in " + square + " is " + squareChars.get(square));
+                    }
+                    else{
+                        counter++;
+                    }
+                }
+                //if the square is empty just increment the counter
+                else{
+                    counter++;
+                }
+            }
+            if(counter != 0){
+                fen = fen + counter;
+                counter = 0;
+            }
+            if(row < 8) {
+                fen = fen + '/';
+            }
+        }
+        return fen.trim();
+    }
+
     public static int getResId(String resName, Class<?> c) {
 
         try {
@@ -333,7 +382,95 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void set(View view){
-        setFromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        setFromFEN("r1b2bkr/ppp3pp/2n5/3qp3/2B5/8/PPPP1PPP/RNB1K2R w KQ - 0 2");
+    }
+
+    public void sendImg(View v){
+        String path = getIntent().getExtras().getString("path");
+        final TextView mTextView = findViewById(R.id.activeFen);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://98.234.140.213/digitize?img=@";
+        url = url + path;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void getBestMoveWhite(View v){
+        final TextView mTextView = findViewById(R.id.activeFen);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fen = getFen();
+        Log.d("white", fen);
+        String url ="http://98.234.140.213/nextMove?fen=";
+        url = url + fen;
+        url = url + " w - - 0 1";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void getBestMoveBlack(View v){
+        final TextView mTextView = findViewById(R.id.activeFen);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fen = getFen();
+        Log.d("black", fen);
+        String url ="http://98.234.140.213/nextMove?fen=";
+        url = url + fen;
+        url = url + " b - - 0 1";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText("Response is: "+ response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
+        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 
     public void wipeSquare(String square){
