@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -386,31 +387,22 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void sendImg(View v){
-        String path = getIntent().getExtras().getString("path");
-        final TextView mTextView = findViewById(R.id.activeFen);
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://98.234.140.213/digitize?img=@";
-        url = url + path;
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        File pic = (File) getIntent().getExtras().get("pic");
+        String str = "";
+        new MultipartRequest("hello",
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("img","That didn't work!");
+                    }
+                },
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
-                        mTextView.setText("Response is: "+ response);
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
-            }
-        });
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
-
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
+                }, pic, str);
     }
 
     public void getBestMoveWhite(View v){

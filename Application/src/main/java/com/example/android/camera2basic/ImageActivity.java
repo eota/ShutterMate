@@ -28,6 +28,7 @@ public class ImageActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), DigitalBoardActivity.class);
         File pic = (File) getIntent().getExtras().get("pic.jpg");
         Log.d("imageToDigi", pic.getAbsolutePath());
+        i.putExtra("pic", pic);
         i.putExtra("path", pic.getAbsolutePath());
         startActivity(i);
     }
