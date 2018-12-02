@@ -3,6 +3,8 @@ package com.example.android.camera2basic;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -105,6 +107,9 @@ public class DigitalBoardActivity extends AppCompatActivity {
     ImageView h8;
     Hashtable<String, Integer> squareIds;
     Hashtable<String, Character> squareChars;
+
+    private LineView lv;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("result", "in result");
@@ -277,6 +282,12 @@ public class DigitalBoardActivity extends AppCompatActivity {
         h6.setOnClickListener(listener);
         h7.setOnClickListener(listener);
         h8.setOnClickListener(listener);
+
+        lv = findViewById(R.id.lineView);
+        PointF p1 = new PointF(0,0);
+        PointF p2 = new PointF(0,0);
+        lv.setPointA(p1);
+        lv.setPointB(p2);
     }
 
     public void displayFen(View v){
@@ -334,6 +345,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     public void set(View view){
         setFromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+        drawLine(e7,e5);
     }
 
     public void wipeSquare(String square){
@@ -598,4 +610,13 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 return "null";
         }
     }
+
+    private void drawLine(ImageView fromPos, ImageView toPos){
+        float offset = a1.getWidth()/2;
+        lv.setPointA(new PointF(fromPos.getX()+offset,fromPos.getY()+offset));
+        lv.setPointB(new PointF(toPos.getX()+offset,toPos.getY()+offset));
+        lv.bringToFront();
+        lv.draw();
+    }
+
 }
