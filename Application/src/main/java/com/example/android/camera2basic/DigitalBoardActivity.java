@@ -300,44 +300,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     public void displayFen(View v){
         TextView fenView = findViewById(R.id.activeFen);
-        String fen = "";
-        Integer counter = 0;
-        String square;
-        //for each row
-        for(Integer row = 1; row < 9; row++){
-            //for each column
-            for(Character column = 'a'; column < 'i'; column++){
-                square = column.toString() + row;
-                //if the square contains anything
-                if(squareChars.containsKey(square)){
-                    if(squareChars.get(square)!='0') {
-                        //append and then reset the counter
-                        if (counter != 0) {
-                            fen = fen + counter;
-                            counter = 0;
-                        }
-                        //append the piece
-                        fen = fen + squareChars.get(square);
-                        Log.d("fen", "in " + square + " is " + squareChars.get(square));
-                    }
-                    else{
-                        counter++;
-                    }
-                }
-                //if the square is empty just increment the counter
-                else{
-                    counter++;
-                }
-            }
-            if(counter != 0){
-                fen = fen + counter;
-                counter = 0;
-            }
-            if(row < 8) {
-                fen = fen + '/';
-            }
-        }
-        fenView.setText(fen);
+        Log.d("fen", getFen());
+        fenView.setText(getFen());
     }
 
     public String getFen(){
@@ -345,7 +309,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         Integer counter = 0;
         String square;
         //for each row
-        for(Integer row = 1; row < 9; row++){
+        for(Integer row = 8; row > 0; row--){
             //for each column
             for(Character column = 'a'; column < 'i'; column++){
                 square = column.toString() + row;
@@ -359,7 +323,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
                         }
                         //append the piece
                         fen = fen + squareChars.get(square);
-                        Log.d("fen", "in " + square + " is " + squareChars.get(square));
                     }
                     else{
                         counter++;
@@ -374,7 +337,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 fen = fen + counter;
                 counter = 0;
             }
-            if(row < 8) {
+            if(row > 1) {
                 fen = fen + '/';
             }
         }
@@ -393,7 +356,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void set(View view){
-        setFromFEN("r1b2bkr/ppp3pp/2n5/3qp3/2B5/8/PPPP1PPP/RNB1K2R w KQ - 0 2");
+        setFromFEN("r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5");
     }
 
     public void sendImg(View v){
@@ -498,7 +461,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void wipeSquare(String square){
-        Log.d("wipe", "wiping " + square);
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
         if(squareIds.containsKey(square)){
             if(squareIds.get(square) != 0) {
@@ -514,11 +476,11 @@ public class DigitalBoardActivity extends AppCompatActivity {
         String[] arr = fen.split("/");
         Character column;
         String[] rowChars;
-        Integer row = 1;
+        Integer row = 8;
         //for each row in the fen code
-        for (int i = 0; i < arr.length; i++){
+        for (int i = 1; i < 9; i++){
             column = 'a';
-            rowChars = arr[i].split("");
+            rowChars = arr[i - 1].trim().split("");
             //for each piece in each row
             for (String piece : rowChars){
                 String square = column.toString() + row;
@@ -544,8 +506,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     }
                 }
             }
-            row++;
-            if(row == 9) {
+            row--;
+            if(row == 0) {
                 break;
             }
         }
