@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,7 +29,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -388,12 +398,13 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     public void sendImg(View v){
         File pic = (File) getIntent().getExtras().get("pic");
-        String str = "";
-        new MultipartRequest("hello",
-                new Response.ErrorListener(){
+//        File pic = (File) getResources(R.drawable.board);
+        String str = "img";
+        MultipartRequest multipartRequest = new MultipartRequest("http://100.64.113.81/digitize",
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("img","That didn't work!");
+                        Log.d("img", "That didn't work!");
                     }
                 },
                 new Response.Listener<String>() {
@@ -403,6 +414,27 @@ public class DigitalBoardActivity extends AppCompatActivity {
                         Log.d("server", response);
                     }
                 }, pic, str);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(
+                8000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(multipartRequest);
+
+//        HttpClient httpclient = new DefaultHttpClient();
+//        HttpPost httppost = new HttpPost("http://100.64.113.81/digitize");
+//
+//        MultipartEntity mpEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+//        Log.d("EDIT USER PROFILE", "UPLOAD: file length = " + pic.length());
+//        Log.d("EDIT USER PROFILE", "UPLOAD: file exist = " + pic.exists());
+//        mpEntity.addPart("img", new FileBody(pic));
+//        httppost.setEntity(mpEntity);
+//        try {
+//            HttpResponse response = httpclient.execute(httppost);
+//            Log.d("server", response.toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void getBestMoveWhite(View v){

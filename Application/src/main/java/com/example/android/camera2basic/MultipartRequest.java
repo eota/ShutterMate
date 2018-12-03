@@ -8,18 +8,16 @@ import com.android.volley.VolleyLog;
 
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.StringBody;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 public class MultipartRequest extends Request<String> {
 
     private MultipartEntity entity = new MultipartEntity();
 
-    private static final String FILE_PART_NAME = "file";
+    private static final String FILE_PART_NAME = "img";
     private static final String STRING_PART_NAME = "text";
 
     private final Response.Listener<String> mListener;
@@ -28,7 +26,7 @@ public class MultipartRequest extends Request<String> {
 
     public MultipartRequest(String url, Response.ErrorListener errorListener, Response.Listener<String> listener, File file, String stringPart)
     {
-        super(Method.GET, url, errorListener);
+        super(Method.POST, url, errorListener);
 
         mListener = listener;
         mFilePart = file;
@@ -39,14 +37,6 @@ public class MultipartRequest extends Request<String> {
     private void buildMultipartEntity()
     {
         entity.addPart(FILE_PART_NAME, new FileBody(mFilePart));
-        try
-        {
-            entity.addPart(STRING_PART_NAME, new StringBody(mStringPart));
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            VolleyLog.e("UnsupportedEncodingException");
-        }
     }
 
     @Override
@@ -73,6 +63,11 @@ public class MultipartRequest extends Request<String> {
     @Override
     protected Response<String> parseNetworkResponse(NetworkResponse response)
     {
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Response.success("Uploaded", getCacheEntry());
     }
 
