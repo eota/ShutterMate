@@ -619,4 +619,9 @@ public class DigitalBoardActivity extends AppCompatActivity {
         lv.draw();
     }
 
+    public void cameraPressed(View view){
+        Intent i = new Intent(this, CameraActivity.class);
+        startActivity(i);
+    }
+
 }
