@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.net.Uri;
@@ -126,7 +127,14 @@ public class DigitalBoardActivity extends AppCompatActivity {
     ImageView h8;
     Hashtable<String, Integer> squareIds;
     Hashtable<String, Character> squareChars;
+
+    private boolean wq;
+    private boolean wk;
+    private boolean bq;
+    private boolean bk;
+
     private LineView lv;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("result", "in result");
@@ -152,8 +160,22 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     Highlight.setHighlight(0);
                 }
             }
+        } else if (resultCode == 2){
+            Boolean wq = data.getBooleanExtra("wqSwitch",true);
+            Boolean wk = data.getBooleanExtra("wkSwitch",true);
+            Boolean bq = data.getBooleanExtra("bqSwitch",true);
+            Boolean bk = data.getBooleanExtra("bkSwitch",true);
+            Boolean whiteTurn = data.getBooleanExtra("whiteTurn",true);
+            if (whiteTurn) {
+                getBestMoveWhite(wq, wk, bq, bk);
+            } else if (!whiteTurn){
+                getBestMoveBlack(wq, wk, bq, bk);
+            } else {
+                Log.e("turn error: ", "Error finding whose turn");
+            }
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -310,23 +332,13 @@ public class DigitalBoardActivity extends AppCompatActivity {
         lv.setPointB(p2);
     }
 
-    private void drawLine(ImageView fromPos, ImageView toPos){
-
-
-        float offset = a1.getWidth()/2;
-        lv.setPointA(new PointF(fromPos.getX()+offset,fromPos.getY()+offset));
-        lv.setPointB(new PointF(toPos.getX()+offset,toPos.getY()+offset));
-        lv.bringToFront();
-        lv.draw();
-    }
-
     public void displayFen(View v){
         TextView fenView = findViewById(R.id.activeFen);
         Log.d("fen", getFen());
         fenView.setText(getFen());
     }
 
-    public String getFen(){
+   public String getFen(){
         String fen = "";
         Integer counter = 0;
         String square;
@@ -382,36 +394,38 @@ public class DigitalBoardActivity extends AppCompatActivity {
         setFromFEN("r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5");
     }
 
-    public void getBestMoveWhite(View v){
+    public void getBestMoveWhite(boolean wq, boolean wk, boolean bq, boolean bk){
         final TextView mTextView = findViewById(R.id.activeFen);
-        Switch castlewk = findViewById(R.id.castlewk);
-        Switch castlewq = findViewById(R.id.castlewq);
-        Switch castlebk = findViewById(R.id.castlebk);
-        Switch castlebq = findViewById(R.id.castlebq);
+        //final TextView fenTxt = findViewById(R.id.fenTextView);
+//        Switch castlewk = findViewById(R.id.castlewk);
+//        Switch castlewq = findViewById(R.id.castlewq);
+//        Switch castlebk = findViewById(R.id.castlebk);
+//        Switch castlebq = findViewById(R.id.castlebq);
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
         String url ="http://100.64.112.41:8080/nextMove?fen=";
         url = url + fen;
         url = url + "%20w%20";
-        if(castlewk.isChecked()){
+        if(wk){
             url = url + "K";
         }
-        if(castlewq.isChecked()){
+        if(wq){
             url = url + "Q";
         }
-        if(castlebk.isChecked()){
+        if(bk){
             url = url + "k";
         }
-        if(castlebq.isChecked()){
+        if(bq){
             url = url + "q";
         }
-        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+        if(!wk && !wq && !bk && !bq){
             url = url + "-";
         }
         url = url + "%20-%200%201";
         mTextView.setText(url);
         Log.d("fen url", url);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -419,6 +433,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
                         drawLineFromResponse(response);
+                        setCpTxt(response);
+                        //fenTxt.setText(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -429,31 +445,28 @@ public class DigitalBoardActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    public void getBestMoveBlack(View v){
+    public void getBestMoveBlack(boolean wq, boolean wk, boolean bq, boolean bk){
         final TextView mTextView = findViewById(R.id.activeFen);
+        final TextView fenTxt = findViewById(R.id.fenTextView);
         RequestQueue queue = Volley.newRequestQueue(this);
-        Switch castlewk = findViewById(R.id.castlewk);
-        Switch castlewq = findViewById(R.id.castlewq);
-        Switch castlebk = findViewById(R.id.castlebk);
-        Switch castlebq = findViewById(R.id.castlebq);
         String fen = getFen();
         Log.d("white", fen);
         String url ="http://100.64.112.41:8080/nextMove?fen=";
         url = url + fen;
         url = url + "%20b%20";
-        if(castlewk.isChecked()){
+        if(wk){
             url = url + "K";
         }
-        if(castlewq.isChecked()){
+        if(wq){
             url = url + "Q";
         }
-        if(castlebk.isChecked()){
+        if(bk){
             url = url + "k";
         }
-        if(castlebq.isChecked()){
+        if(bq){
             url = url + "q";
         }
-        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+        if(!wk && !wq && !bk && !bq){
             url = url + "-";
         }
         url = url + "%20-%200%201";
@@ -465,6 +478,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
+                        setCpTxt(response);
                         drawLineFromResponse(response);
                     }
                 }, new Response.ErrorListener() {
@@ -498,7 +512,12 @@ public class DigitalBoardActivity extends AppCompatActivity {
         }
         squareChars.put(square, '0');
         squareIds.put(square, 0);
+        setFenTxt();
     }
+
+//    public void evaluate(View v){
+//        getBestMoveBlack();
+//    }
 
     public void setFromFEN(String fen){
         String[] arr = fen.split("/");
@@ -538,6 +557,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
             if(row == 0) {
                 break;
             }
+            setFenTxt();
         }
     }
 
@@ -557,6 +577,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
             if(squareIds.get(squareStr) != 0) {
                 ImageView oldPiece = findViewById(squareIds.get(squareStr));
                 constraintLayout.removeView(oldPiece);
+                wipeSquare(squareStr);
             }
         }
         constraintLayout.addView(newPiece);
@@ -571,8 +592,9 @@ public class DigitalBoardActivity extends AppCompatActivity {
         set.connect(newPiece.getId(), ConstraintSet.LEFT, square, ConstraintSet.LEFT, 0);
         set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
         set.applyTo(constraintLayout);
+        setFenTxt();
     }
-    
+
     public Integer squareOnClick(View v) {
         ImageView square = (ImageView) v;
         square.setColorFilter(Color.argb(255, 255, 255, 255));
@@ -749,4 +771,38 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 return "null";
         }
     }
+
+    private void drawLine(ImageView fromPos, ImageView toPos){
+        float offset = a1.getWidth()/2;
+        lv.setPointA(new PointF(fromPos.getX()+offset,fromPos.getY()+offset));
+        lv.setPointB(new PointF(toPos.getX()+offset,toPos.getY()+offset));
+        lv.bringToFront();
+        lv.draw();
+    }
+
+    public void cameraPressed(View view){
+        Intent i = new Intent(this, CameraActivity.class);
+        startActivity(i);
+    }
+
+    public void onEvaluate(View view){
+        Intent i = new Intent(this, BoardPrefsActivity.class);
+        startActivityForResult(i, 2);
+    }
+
+    private void setFenTxt(){
+        final TextView t = findViewById(R.id.fenTextView);
+        t.setText(getFen());
+    }
+
+    private void setCpTxt(String response){
+        String[] parsedResponse = response.split(" ");
+        String cpValue = parsedResponse[1];
+        if(cpValue.equals("None")) {
+            cpValue = "Mate " + parsedResponse[2];
+        }
+        TextView t = findViewById(R.id.cpTextView);
+        t.setText(cpValue);
+    }
+
 }

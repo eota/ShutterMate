@@ -6,25 +6,57 @@
     android:id="@+id/constraintLayout"
     tools:context=".DigitalBoardActivity">
 
+    <Button
+        android:id="@+id/cameraBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/camera_icon"
+        android:onClick="cameraPressed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.example.android.camera2basic.LineView
         android:id="@+id/lineView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newbg" />
+
 <!--
     <Button
         android:id="@+id/set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="set"
-        android:text="Set"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/board" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newbg" />
+
+    <Button
+        android:id="@+id/cameraBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/camera_icon"
+        android:onClick="cameraPressed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.android.camera2basic.LineView
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 -->
     <ImageView
         android:id="@+id/g1"
@@ -32,7 +64,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f1"
         app:layout_constraintTop_toBottomOf="@+id/g2"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/f1"
@@ -40,7 +72,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e1"
         app:layout_constraintTop_toBottomOf="@+id/f2"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h1"
@@ -48,7 +80,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g1"
         app:layout_constraintTop_toBottomOf="@+id/h2"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h2"
@@ -56,7 +88,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g2"
         app:layout_constraintTop_toBottomOf="@+id/h3"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g2"
@@ -64,7 +96,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f2"
         app:layout_constraintTop_toBottomOf="@+id/g3"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h3"
@@ -72,7 +104,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g3"
         app:layout_constraintTop_toBottomOf="@+id/h4"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/f3"
@@ -80,7 +112,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e3"
         app:layout_constraintTop_toBottomOf="@+id/f4"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/d3"
@@ -88,7 +120,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c3"
         app:layout_constraintTop_toBottomOf="@+id/d4"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h4"
@@ -96,7 +128,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g4"
         app:layout_constraintTop_toBottomOf="@+id/h5"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/f4"
@@ -104,7 +136,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e4"
         app:layout_constraintTop_toBottomOf="@+id/f5"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/d4"
@@ -112,7 +144,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c4"
         app:layout_constraintTop_toBottomOf="@+id/d5"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g4"
@@ -120,7 +152,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f4"
         app:layout_constraintTop_toBottomOf="@+id/g5"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h5"
@@ -128,7 +160,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g5"
         app:layout_constraintTop_toBottomOf="@+id/h6"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/f5"
@@ -136,7 +168,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e5"
         app:layout_constraintTop_toBottomOf="@+id/f6"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/c5"
@@ -144,7 +176,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b5"
         app:layout_constraintTop_toBottomOf="@+id/c6"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/b4"
@@ -152,7 +184,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a4"
         app:layout_constraintTop_toBottomOf="@+id/b5"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/e5"
@@ -160,7 +192,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d5"
         app:layout_constraintTop_toBottomOf="@+id/e6"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g5"
@@ -168,7 +200,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f5"
         app:layout_constraintTop_toBottomOf="@+id/g6"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g6"
@@ -176,7 +208,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f6"
         app:layout_constraintTop_toBottomOf="@+id/g7"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/d6"
@@ -184,7 +216,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c6"
         app:layout_constraintTop_toBottomOf="@+id/d7"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/f6"
@@ -192,7 +224,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e6"
         app:layout_constraintTop_toBottomOf="@+id/f7"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/h6"
@@ -200,7 +232,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g6"
         app:layout_constraintTop_toBottomOf="@+id/h7"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
 
     <ImageView
@@ -214,7 +246,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/b7"
@@ -222,7 +254,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a7"
         app:layout_constraintTop_toBottomOf="@+id/b8"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/c6"
@@ -230,7 +262,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b6"
         app:layout_constraintTop_toBottomOf="@+id/c7"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/b5"
@@ -238,7 +270,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a5"
         app:layout_constraintTop_toBottomOf="@+id/b6"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/a4"
@@ -250,7 +282,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a5"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/a2"
@@ -262,7 +294,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a3"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/c2"
@@ -270,7 +302,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b2"
         app:layout_constraintTop_toBottomOf="@+id/c3"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/b1"
@@ -278,7 +310,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a1"
         app:layout_constraintTop_toBottomOf="@+id/b2"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/d1"
@@ -286,7 +318,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c1"
         app:layout_constraintTop_toBottomOf="@+id/d2"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/e2"
@@ -294,7 +326,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d2"
         app:layout_constraintTop_toBottomOf="@+id/e3"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/c4"
@@ -302,7 +334,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b4"
         app:layout_constraintTop_toBottomOf="@+id/c5"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/b3"
@@ -310,7 +342,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a3"
         app:layout_constraintTop_toBottomOf="@+id/b4"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/e4"
@@ -318,7 +350,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d4"
         app:layout_constraintTop_toBottomOf="@+id/e5"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/d5"
@@ -326,7 +358,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c5"
         app:layout_constraintTop_toBottomOf="@+id/d6"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/c8"
@@ -335,7 +367,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/b8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/d7"
@@ -343,7 +375,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c7"
         app:layout_constraintTop_toBottomOf="@+id/d8"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/a6"
@@ -355,7 +387,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a7"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/f7"
@@ -363,7 +395,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e7"
         app:layout_constraintTop_toBottomOf="@+id/f8"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/e6"
@@ -371,7 +403,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d6"
         app:layout_constraintTop_toBottomOf="@+id/e7"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/h7"
@@ -379,7 +411,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/g7"
         app:layout_constraintTop_toBottomOf="@+id/h8"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/e8"
@@ -388,7 +420,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/d8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/g8"
@@ -397,7 +429,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/f8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_orange_light" />
+        app:srcCompat="@color/lightSquare" />
 
     <ImageView
         android:id="@+id/b8"
@@ -406,7 +438,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/a8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/a7"
@@ -418,7 +450,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a8"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/c7"
@@ -426,7 +458,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b7"
         app:layout_constraintTop_toBottomOf="@+id/c8"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/b6"
@@ -434,7 +466,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a6"
         app:layout_constraintTop_toBottomOf="@+id/b7"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/a5"
@@ -446,7 +478,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a6"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/a3"
@@ -458,7 +490,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a4"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/a1"
@@ -470,7 +502,7 @@
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a2"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/c3"
@@ -478,7 +510,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b3"
         app:layout_constraintTop_toBottomOf="@+id/c4"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/b2"
@@ -486,7 +518,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/a2"
         app:layout_constraintTop_toBottomOf="@+id/b3"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/d2"
@@ -494,7 +526,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/c2"
         app:layout_constraintTop_toBottomOf="@+id/d3"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/c1"
@@ -502,7 +534,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/b1"
         app:layout_constraintTop_toBottomOf="@+id/c2"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/e1"
@@ -510,7 +542,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d1"
         app:layout_constraintTop_toBottomOf="@+id/e2"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/f2"
@@ -518,7 +550,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/e2"
         app:layout_constraintTop_toBottomOf="@+id/f3"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/e3"
@@ -526,7 +558,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d3"
         app:layout_constraintTop_toBottomOf="@+id/e4"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g3"
@@ -534,7 +566,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f3"
         app:layout_constraintTop_toBottomOf="@+id/g4"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/e7"
@@ -542,7 +574,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/d7"
         app:layout_constraintTop_toBottomOf="@+id/e8"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/g7"
@@ -550,7 +582,7 @@
         android:layout_height="45dp"
         app:layout_constraintStart_toEndOf="@+id/f7"
         app:layout_constraintTop_toBottomOf="@+id/g8"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/d8"
@@ -559,7 +591,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/c8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/f8"
@@ -568,7 +600,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/e8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <ImageView
         android:id="@+id/h8"
@@ -577,7 +609,7 @@
         android:layout_marginTop="72dp"
         app:layout_constraintStart_toEndOf="@+id/g8"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_light" />
+        app:srcCompat="@color/darkSquare" />
 
     <TextView
         android:id="@+id/activeFen"
@@ -588,6 +620,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="FEN"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -595,56 +628,121 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.728" />
 <!--
-    <Button
-        android:id="@+id/fenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="FEN"
-        android:onClick="displayFen"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottomConstraint"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/fenImg"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/NextMoveBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/fen_" />
+
+        <TextView
+            android:id="@+id/fenTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="8/8/8/8/8/8/8/8"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/fenImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cpImg"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="90dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cp_" />
+
+        <TextView
+            android:id="@+id/cpTxtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
+            android:text="3.32"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/cpImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/evaluateBtn"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            android:background="@drawable/evaluate_board"
+            android:onClick="evaluate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 -->
-    <Button
-        android:id="@+id/whiteMoveButton"
+    <ImageView
+        android:id="@+id/cpImgView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="getBestMoveWhite"
-        android:text="white move"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:srcCompat="@drawable/cp_white" />
+
+    <TextView
+        android:id="@+id/fenTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="8/8/8/8/8/8/8/8"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/NextMoveBtn"
+        app:layout_constraintStart_toEndOf="@+id/fenImgView" />
+
+    <TextView
+        android:id="@+id/cpTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="505dp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/cpImgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fenImgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987" />
+        app:srcCompat="@drawable/fen_white" />
 
     <Button
-        android:id="@+id/blackMoveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="getBestMoveBlack"
-        android:text="black move"
+        android:id="@+id/evaluateBtn"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:background="@drawable/evaluate_board"
+        android:onClick="onEvaluate"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!--
         <TextView
             android:id="@+id/textView"
@@ -677,73 +775,20 @@
             app:layout_constraintTop_toBottomOf="@+id/fenButton"
             app:layout_constraintVertical_bias="1.0" />
     -->
-    <Switch
-        android:id="@+id/castlewk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:checked="true"
-        android:text="white castle kingside?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893" />
 
-    <Switch
-        android:id="@+id/castlewq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:checked="true"
-        android:text="white castle queenside?"
+    <Button
+        android:id="@+id/NextMoveBtn"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/next_move"
+        android:text="\n\nd7d5"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
-
-    <Switch
-        android:id="@+id/castlebk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:checked="true"
-        android:text="black castle kingside?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893" />
-
-    <Switch
-        android:id="@+id/castlebq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:checked="true"
-        android:text="black castle queensideside?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.851" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
+

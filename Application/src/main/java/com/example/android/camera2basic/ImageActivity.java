@@ -1,5 +1,4 @@
 package com.example.android.camera2basic;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -62,8 +61,5 @@ public class ImageActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(multipartRequest);
     }
-    public void board(View v){
-
-    }
-
 }
+
