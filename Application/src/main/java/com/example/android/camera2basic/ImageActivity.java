@@ -61,7 +61,7 @@ public class ImageActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(multipartRequest);
     }
-    
+
     public void onPrefPressed(View v){
         Intent i = new Intent(this, BoardPrefsActivity.class);
         startActivity(i);
