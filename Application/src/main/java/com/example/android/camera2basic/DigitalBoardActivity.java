@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -19,6 +20,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -124,6 +126,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     ImageView h8;
     Hashtable<String, Integer> squareIds;
     Hashtable<String, Character> squareChars;
+    private LineView lv;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("result", "in result");
@@ -155,6 +158,12 @@ public class DigitalBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_board);
+        TextView text = findViewById(R.id.activeFen);
+        squareIds = new Hashtable<>();
+        squareChars = new Hashtable<>();
+        String fen = getIntent().getExtras().getString("boardstate");
+        setFromFEN(fen);
+        text.setText("Boardstate set!");
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,8 +175,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
             }
         };
 
-        squareIds = new Hashtable<>();
-        squareChars = new Hashtable<>();
         a1 = findViewById(R.id.a1);
         a2 = findViewById(R.id.a2);
         a3 = findViewById(R.id.a3);
@@ -296,6 +303,21 @@ public class DigitalBoardActivity extends AppCompatActivity {
         h6.setOnClickListener(listener);
         h7.setOnClickListener(listener);
         h8.setOnClickListener(listener);
+        lv = findViewById(R.id.lineView);
+        PointF p1 = new PointF(0,0);
+        PointF p2 = new PointF(0,0);
+        lv.setPointA(p1);
+        lv.setPointB(p2);
+    }
+
+    private void drawLine(ImageView fromPos, ImageView toPos){
+
+
+        float offset = a1.getWidth()/2;
+        lv.setPointA(new PointF(fromPos.getX()+offset,fromPos.getY()+offset));
+        lv.setPointB(new PointF(toPos.getX()+offset,toPos.getY()+offset));
+        lv.bringToFront();
+        lv.draw();
     }
 
     public void displayFen(View v){
@@ -341,7 +363,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 fen = fen + '/';
             }
         }
-        return fen.trim();
+        fen = fen.trim();
+        return fen;
     }
 
     public static int getResId(String resName, Class<?> c) {
@@ -359,62 +382,42 @@ public class DigitalBoardActivity extends AppCompatActivity {
         setFromFEN("r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5");
     }
 
-    public void sendImg(View v){
-        File pic = (File) getIntent().getExtras().get("pic");
-//        File pic = (File) getResources(R.drawable.board);
-        String str = "img";
-        MultipartRequest multipartRequest = new MultipartRequest("http://100.64.113.81/digitize",
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("img", "That didn't work!");
-                    }
-                },
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        Log.d("server", response);
-                    }
-                }, pic, str);
-        RequestQueue queue = Volley.newRequestQueue(this);
-        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(
-                8000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        queue.add(multipartRequest);
-
-//        HttpClient httpclient = new DefaultHttpClient();
-//        HttpPost httppost = new HttpPost("http://100.64.113.81/digitize");
-//
-//        MultipartEntity mpEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-//        Log.d("EDIT USER PROFILE", "UPLOAD: file length = " + pic.length());
-//        Log.d("EDIT USER PROFILE", "UPLOAD: file exist = " + pic.exists());
-//        mpEntity.addPart("img", new FileBody(pic));
-//        httppost.setEntity(mpEntity);
-//        try {
-//            HttpResponse response = httpclient.execute(httppost);
-//            Log.d("server", response.toString());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
     public void getBestMoveWhite(View v){
         final TextView mTextView = findViewById(R.id.activeFen);
+        Switch castlewk = findViewById(R.id.castlewk);
+        Switch castlewq = findViewById(R.id.castlewq);
+        Switch castlebk = findViewById(R.id.castlebk);
+        Switch castlebq = findViewById(R.id.castlebq);
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
         String url ="http://98.234.140.213/nextMove?fen=";
         url = url + fen;
-        url = url + " w - - 0 1";
+        url = url + "%20w%20";
+        if(castlewk.isChecked()){
+            url = url + "K";
+        }
+        if(castlewq.isChecked()){
+            url = url + "Q";
+        }
+        if(castlebk.isChecked()){
+            url = url + "k";
+        }
+        if(castlebq.isChecked()){
+            url = url + "q";
+        }
+        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+            url = url + "-";
+        }
+        mTextView.setText(url);
+        Log.d("fen url", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
-                        mTextView.setText("Response is: "+ response);
+                        mTextView.setText(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -422,29 +425,46 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 mTextView.setText("That didn't work!");
             }
         });
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
-
-// Add the request to the RequestQueue.
         queue.add(stringRequest);
+        drawLineFromResponse(mTextView.getText());
     }
 
     public void getBestMoveBlack(View v){
         final TextView mTextView = findViewById(R.id.activeFen);
         RequestQueue queue = Volley.newRequestQueue(this);
+        Switch castlewk = findViewById(R.id.castlewk);
+        Switch castlewq = findViewById(R.id.castlewq);
+        Switch castlebk = findViewById(R.id.castlebk);
+        Switch castlebq = findViewById(R.id.castlebq);
         String fen = getFen();
-        Log.d("black", fen);
+        Log.d("white", fen);
         String url ="http://98.234.140.213/nextMove?fen=";
         url = url + fen;
-        url = url + " b - - 0 1";
+        url = url + "%20b%20";
+        if(castlewk.isChecked()){
+            url = url + "K";
+        }
+        if(castlewq.isChecked()){
+            url = url + "Q";
+        }
+        if(castlebk.isChecked()){
+            url = url + "k";
+        }
+        if(castlebq.isChecked()){
+            url = url + "q";
+        }
+        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+            url = url + "-";
+        }
+        mTextView.setText(url);
+        Log.d("fen url", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
-                        mTextView.setText("Response is: "+ response);
+                        mTextView.setText(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -452,12 +472,20 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 mTextView.setText("That didn't work!");
             }
         });
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201 HTTP/1.1
-        //GET /nextMove?fen=r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20-%20-%200%201 HTTP/1.1
-
-// Add the request to the RequestQueue.
         queue.add(stringRequest);
+        drawLineFromResponse(mTextView.getText());
+    }
+
+    public void drawLineFromResponse(CharSequence response){
+        String responseStr = (String) response;
+        String[] parsedResponse = responseStr.split(" ");
+        String move = parsedResponse[0];
+        String[] moveChars = move.split("");
+        String squareFrom = moveChars[0] + moveChars[1];
+        String squareTo = moveChars[2] + moveChars[3];
+        ImageView fromIV = findViewById(getResId(squareFrom, R.id.class));
+        ImageView toIV = findViewById(getResId(squareTo, R.id.class));
+        drawLine(fromIV, toIV);
     }
 
     public void wipeSquare(String square){

@@ -63,12 +63,14 @@ public class MultipartRequest extends Request<String> {
     @Override
     protected Response<String> parseNetworkResponse(NetworkResponse response)
     {
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        byte[] fenBytes = response.data;
+        String fen = "";
+        char charByte;
+        for(byte _byte : fenBytes){
+            charByte = (char) _byte;
+            fen = fen + charByte;
         }
-        return Response.success("Uploaded", getCacheEntry());
+        return Response.success(fen, getCacheEntry());
     }
 
     @Override
