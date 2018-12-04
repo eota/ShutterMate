@@ -20,7 +20,15 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -141,6 +149,12 @@ public class DigitalBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_board);
+        TextView text = findViewById(R.id.activeFen);
+        squareIds = new Hashtable<>();
+        squareChars = new Hashtable<>();
+        String fen = getIntent().getExtras().getString("boardstate");
+        setFromFEN(fen);
+        text.setText("Boardstate set!");
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +165,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 startActivityForResult(i, 1);
             }
         };
-
         squareIds = new Hashtable<>();
         squareChars = new Hashtable<>();
         a1 = findViewById(R.id.a1);
@@ -290,6 +303,155 @@ public class DigitalBoardActivity extends AppCompatActivity {
         lv.setPointB(p2);
     }
 
+    public String getFen(){
+        String fen = "";
+        Integer counter = 0;
+        String square;
+        //for each row
+        for(Integer row = 8; row > 0; row--){
+            //for each column
+            for(Character column = 'a'; column < 'i'; column++){
+                square = column.toString() + row;
+                //if the square contains anything
+                if(squareChars.containsKey(square)){
+                    if(squareChars.get(square)!='0') {
+                        //append and then reset the counter
+                        if (counter != 0) {
+                            fen = fen + counter;
+                            counter = 0;
+                        }
+                        //append the piece
+                        fen = fen + squareChars.get(square);
+                    }
+                    else{
+                        counter++;
+                    }
+                }
+                //if the square is empty just increment the counter
+                else{
+                    counter++;
+                }
+            }
+            if(counter != 0){
+                fen = fen + counter;
+                counter = 0;
+            }
+            if(row > 1) {
+                fen = fen + '/';
+            }
+        }
+        fen = fen.trim();
+        return fen;
+    }
+
+    public void getBestMoveWhite(){
+        final TextView mTextView = findViewById(R.id.activeFen);
+        Switch castlewk = findViewById(R.id.wkswitch);
+        Switch castlewq = findViewById(R.id.wqswitch);
+        Switch castlebk = findViewById(R.id.bkswitch);
+        Switch castlebq = findViewById(R.id.bqswitch);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fen = getFen();
+        Log.d("white", fen);
+        String url ="http://100.64.112.41:8080/nextMove?fen=";
+        url = url + fen;
+        url = url + "%20w%20";
+        if(castlewk.isChecked()){
+            url = url + "K";
+        }
+        if(castlewq.isChecked()){
+            url = url + "Q";
+        }
+        if(castlebk.isChecked()){
+            url = url + "k";
+        }
+        if(castlebq.isChecked()){
+            url = url + "q";
+        }
+        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+            url = url + "-";
+        }
+        mTextView.setText(url);
+        Log.d("fen url", url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
+        drawLineFromResponse(mTextView.getText());
+    }
+
+    public void getBestMoveBlack(){
+        final TextView mTextView = findViewById(R.id.activeFen);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        //pass from intent
+        Switch castlewk = findViewById(R.id.wkswitch);
+        Switch castlewq = findViewById(R.id.wqswitch);
+        Switch castlebk = findViewById(R.id.bkswitch);
+        Switch castlebq = findViewById(R.id.bqswitch);
+        //pass from intent
+        String fen = getFen();
+        Log.d("white", fen);
+        String url ="http://100.64.112.41:8080/nextMove?fen=";
+        url = url + fen;
+        url = url + "%20b%20";
+        if(castlewk.isChecked()){
+            url = url + "K";
+        }
+        if(castlewq.isChecked()){
+            url = url + "Q";
+        }
+        if(castlebk.isChecked()){
+            url = url + "k";
+        }
+        if(castlebq.isChecked()){
+            url = url + "q";
+        }
+        if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
+            url = url + "-";
+        }
+        mTextView.setText(url);
+        Log.d("fen url", url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        mTextView.setText(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
+        drawLineFromResponse(mTextView.getText());
+    }
+
+    public void drawLineFromResponse(CharSequence response){
+        String responseStr = (String) response;
+        String[] parsedResponse = responseStr.split(" ");
+        String move = parsedResponse[0];
+        String[] moveChars = move.split("");
+        String squareFrom = moveChars[0] + moveChars[1];
+        String squareTo = moveChars[2] + moveChars[3];
+        ImageView fromIV = findViewById(getResId(squareFrom, R.id.class));
+        ImageView toIV = findViewById(getResId(squareTo, R.id.class));
+        drawLine(fromIV, toIV);
+    }
+
     public void displayFen(View v){
         TextView fenView = findViewById(R.id.activeFen);
         String fen = "";
@@ -361,6 +523,10 @@ public class DigitalBoardActivity extends AppCompatActivity {
         squareIds.put(square, 0);
     }
 
+    public void evaluate(View v){
+        getBestMoveBlack();
+    }
+
     public void setFromFEN(String fen){
         String[] arr = fen.split("/");
         Character column;
@@ -418,6 +584,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
             if(squareIds.get(squareStr) != 0) {
                 ImageView oldPiece = findViewById(squareIds.get(squareStr));
                 constraintLayout.removeView(oldPiece);
+                wipeSquare(squareStr);
             }
         }
         constraintLayout.addView(newPiece);
@@ -433,7 +600,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         set.connect(newPiece.getId(), ConstraintSet.BOTTOM, square, ConstraintSet.BOTTOM, 0);
         set.applyTo(constraintLayout);
     }
-    
+
     public Integer squareOnClick(View v) {
         ImageView square = (ImageView) v;
         square.setColorFilter(Color.argb(255, 255, 255, 255));
@@ -617,6 +784,11 @@ public class DigitalBoardActivity extends AppCompatActivity {
         lv.setPointB(new PointF(toPos.getX()+offset,toPos.getY()+offset));
         lv.bringToFront();
         lv.draw();
+    }
+
+    public void cameraPressed(View view){
+        Intent i = new Intent(this, CameraActivity.class);
+        startActivity(i);
     }
 
 }
