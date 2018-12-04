@@ -391,7 +391,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
-        String url ="http://98.234.140.213/nextMove?fen=";
+        String url ="http://100.64.112.41:8080/nextMove?fen=";
         url = url + fen;
         url = url + "%20w%20";
         if(castlewk.isChecked()){
@@ -409,6 +409,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
             url = url + "-";
         }
+        url = url + "%20-%200%201";
         mTextView.setText(url);
         Log.d("fen url", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -438,7 +439,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         Switch castlebq = findViewById(R.id.castlebq);
         String fen = getFen();
         Log.d("white", fen);
-        String url ="http://98.234.140.213/nextMove?fen=";
+        String url ="http://100.64.112.41:8080/nextMove?fen=";
         url = url + fen;
         url = url + "%20b%20";
         if(castlewk.isChecked()){
@@ -456,6 +457,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         if(!castlewk.isChecked() && !castlewq.isChecked() && !castlebk.isChecked() && !castlebq.isChecked()){
             url = url + "-";
         }
+        url = url + "%20-%200%201";
         mTextView.setText(url);
         Log.d("fen url", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

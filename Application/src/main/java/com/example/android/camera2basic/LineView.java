@@ -34,6 +34,19 @@ public class LineView extends View {
         paint.setStrokeWidth(12);
 
         canvas.drawLine(pointA.x,pointA.y,pointB.x,pointB.y,paint);
+//        double theta = Math.tanh((pointB.y - pointA.y)/(pointB.x - pointA.x));
+//
+//        double thetaA = -theta + Math.PI/4;
+//        double thetaB = -theta - Math.PI/4;
+//
+//        float xA = (float) (pointB.x - 20 * Math.sin(thetaA));
+//        float yA = (float) (pointB.y - 20 * Math.cos(thetaA));
+//
+//        float xB = (float) (pointB.x - 20 * Math.sin(thetaB));
+//        float yB = (float) (pointB.y - 20 * Math.cos(thetaB));
+//
+//        canvas.drawLine(xA,yA,pointB.x,pointB.y,paint);
+//        canvas.drawLine(xB,yB,pointB.x,pointB.y,paint);
 
         super.onDraw(canvas);
     }
