@@ -31,13 +31,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.impl.client.DefaultHttpClient;
+//import org.apache.http.HttpResponse;
+//import org.apache.http.client.HttpClient;
+//import org.apache.http.client.methods.HttpPost;
+//import org.apache.http.entity.mime.HttpMultipartMode;
+//import org.apache.http.entity.mime.MultipartEntity;
+//import org.apache.http.entity.mime.content.FileBody;
+//import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.File;
 import java.io.IOException;
@@ -418,7 +418,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
-                        mTextView.setText(response);
+                        drawLineFromResponse(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -427,7 +427,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
-        drawLineFromResponse(mTextView.getText());
     }
 
     public void getBestMoveBlack(View v){
@@ -466,7 +465,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         Log.d("server", response);
-                        mTextView.setText(response);
+                        drawLineFromResponse(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -475,7 +474,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
-        drawLineFromResponse(mTextView.getText());
     }
 
     public void drawLineFromResponse(CharSequence response){
@@ -483,8 +481,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
         String[] parsedResponse = responseStr.split(" ");
         String move = parsedResponse[0];
         String[] moveChars = move.split("");
-        String squareFrom = moveChars[0] + moveChars[1];
-        String squareTo = moveChars[2] + moveChars[3];
+        String squareFrom = moveChars[1] + moveChars[2];
+        String squareTo = moveChars[3] + moveChars[4];
         ImageView fromIV = findViewById(getResId(squareFrom, R.id.class));
         ImageView toIV = findViewById(getResId(squareTo, R.id.class));
         drawLine(fromIV, toIV);

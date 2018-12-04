@@ -30,24 +30,16 @@ public class LineView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         paint.setColor(Color.RED);
-
-        paint.setStrokeWidth(12);
-
+        paint.setStrokeWidth(20);
         canvas.drawLine(pointA.x,pointA.y,pointB.x,pointB.y,paint);
-//        double theta = Math.tanh((pointB.y - pointA.y)/(pointB.x - pointA.x));
-//
-//        double thetaA = -theta + Math.PI/4;
-//        double thetaB = -theta - Math.PI/4;
-//
-//        float xA = (float) (pointB.x - 20 * Math.sin(thetaA));
-//        float yA = (float) (pointB.y - 20 * Math.cos(thetaA));
-//
-//        float xB = (float) (pointB.x - 20 * Math.sin(thetaB));
-//        float yB = (float) (pointB.y - 20 * Math.cos(thetaB));
-//
-//        canvas.drawLine(xA,yA,pointB.x,pointB.y,paint);
-//        canvas.drawLine(xB,yB,pointB.x,pointB.y,paint);
-
+        float L1 = (float)(Math.sqrt((Math.pow(pointB.x-pointA.x,2) + Math.pow(pointB.y - pointA.y,2))));
+        System.out.println("distance " + L1);
+        float x3 = (float) (pointB.x + .1 * ((pointA.x - pointB.x)*Math.cos(Math.PI/4) - (pointA.y - pointB.y)*Math.sin(Math.PI/4)));
+        float y3 = (float) (pointB.y + .1 * ((pointA.y - pointB.y)*Math.cos(Math.PI/4) + (pointA.x - pointB.x)*Math.sin(Math.PI/4)));
+        canvas.drawLine(pointB.x, pointB.y, x3, y3, paint);
+        float x4 = (float) (pointB.x + .1 * ((pointA.x - pointB.x)*Math.cos(Math.PI/4) + (pointA.y - pointB.y)*Math.sin(Math.PI/4)));
+        float y4 = (float) (pointB.y + .1 * ((pointA.y - pointB.y)*Math.cos(Math.PI/4) - (pointA.x - pointB.x)*Math.sin(Math.PI/4)));
+        canvas.drawLine(pointB.x, pointB.y, x4, y4, paint);
         super.onDraw(canvas);
     }
 
