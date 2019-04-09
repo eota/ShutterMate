@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -180,12 +181,15 @@ public class DigitalBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_board);
-        TextView text = findViewById(R.id.activeFen);
+//        TextView text = findViewById(R.id.activeFen);
         squareIds = new Hashtable<>();
         squareChars = new Hashtable<>();
-        String fen = getIntent().getExtras().getString("boardstate");
+        String fen;
+        fen = getIntent().getExtras().getString("boardstate");
+        //fen = "r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5";
         setFromFEN(fen);
-        text.setText("Boardstate set!");
+//        text.setText("Boardsta
+// te set!");
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -333,9 +337,9 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void displayFen(View v){
-        TextView fenView = findViewById(R.id.activeFen);
+//        TextView fenView = findViewById(R.id.activeFen);
         Log.d("fen", getFen());
-        fenView.setText(getFen());
+//        fenView.setText(getFen());
     }
 
    public String getFen(){
@@ -395,7 +399,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void getBestMoveWhite(boolean wq, boolean wk, boolean bq, boolean bk){
-        final TextView mTextView = findViewById(R.id.activeFen);
+//        final TextView mTextView = findViewById(R.id.activeFen);
         //final TextView fenTxt = findViewById(R.id.fenTextView);
 //        Switch castlewk = findViewById(R.id.castlewk);
 //        Switch castlewq = findViewById(R.id.castlewq);
@@ -423,7 +427,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
             url = url + "-";
         }
         url = url + "%20-%200%201";
-        mTextView.setText(url);
+//        mTextView.setText(url);
         Log.d("fen url", url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -439,15 +443,15 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
+//                mTextView.setText("That didn't work!");
             }
         });
         queue.add(stringRequest);
     }
 
     public void getBestMoveBlack(boolean wq, boolean wk, boolean bq, boolean bk){
-        final TextView mTextView = findViewById(R.id.activeFen);
-        final TextView fenTxt = findViewById(R.id.fenTextView);
+//        final TextView mTextView = findViewById(R.id.activeFen);
+//        final TextView fenTxt = findViewById(R.id.fenTextView);
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
@@ -470,7 +474,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
             url = url + "-";
         }
         url = url + "%20-%200%201";
-        mTextView.setText(url);
+//        mTextView.setText(url);
         Log.d("fen url", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -484,7 +488,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
+//                mTextView.setText("That didn't work!");
             }
         });
         queue.add(stringRequest);
@@ -494,6 +498,8 @@ public class DigitalBoardActivity extends AppCompatActivity {
         String responseStr = (String) response;
         String[] parsedResponse = responseStr.split(" ");
         String move = parsedResponse[0];
+        Button moveButton = findViewById(R.id.NextMoveBtn);
+        moveButton.setText("\n\n\n" + move);
         String[] moveChars = move.split("");
         String squareFrom = moveChars[1] + moveChars[2];
         String squareTo = moveChars[3] + moveChars[4];
@@ -791,15 +797,15 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     private void setFenTxt(){
-        final TextView t = findViewById(R.id.fenTextView);
-        t.setText(getFen());
+//        final TextView t = findViewById(R.id.fenTextView);
+//        t.setText(getFen());
     }
 
     private void setCpTxt(String response){
         String[] parsedResponse = response.split(" ");
         String cpValue = parsedResponse[1];
         if(cpValue.equals("None")) {
-            cpValue = "Mate " + parsedResponse[2];
+            cpValue = "Mate in " + parsedResponse[2];
         }
         TextView t = findViewById(R.id.cpTextView);
         t.setText(cpValue);

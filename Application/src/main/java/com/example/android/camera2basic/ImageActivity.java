@@ -36,7 +36,8 @@ public class ImageActivity extends AppCompatActivity {
         String str = "img";
         final TextView tv = findViewById(R.id.textView);
         tv.setText("Sending data...");
-        MultipartRequest multipartRequest = new MultipartRequest("http://100.64.112.41:8080/digitize",
+        //old ulr is http://100.64.112.41:8080/digitize
+        MultipartRequest multipartRequest = new MultipartRequest("http://73.170.145.55/digitize",
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {

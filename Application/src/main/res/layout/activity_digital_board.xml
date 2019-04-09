@@ -20,7 +20,9 @@
     <com.example.android.camera2basic.LineView
         android:id="@+id/lineView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
         android:id="@+id/bg"
@@ -611,22 +613,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/darkSquare" />
 
-    <TextView
-        android:id="@+id/activeFen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="FEN"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728" />
+    <!--<TextView-->
+        <!--android:id="@+id/activeFen"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:text="FEN"-->
+        <!--android:visibility="invisible"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.498"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.728" />-->
 <!--
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottomConstraint"
@@ -689,59 +691,60 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 -->
-    <ImageView
-        android:id="@+id/cpImgView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/cp_white" />
+    <!--<ImageView-->
+        <!--android:id="@+id/cpImgView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="100dp"-->
+        <!--android:layout_marginBottom="150dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:srcCompat="@drawable/cp_white" />-->
 
-    <TextView
-        android:id="@+id/fenTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp"
-        android:text="8/8/8/8/8/8/8/8"
-        android:textAlignment="viewStart"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/NextMoveBtn"
-        app:layout_constraintStart_toEndOf="@+id/fenImgView" />
+    <!--<TextView-->
+        <!--android:id="@+id/fenTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="15dp"-->
+        <!--android:layout_marginBottom="15dp"-->
+        <!--android:text="8/8/8/8/8/8/8/8"-->
+        <!--android:textAlignment="viewStart"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/NextMoveBtn" />-->
+
+    <ImageView
+        android:id="@+id/cpImg"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="480dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cp_white" />
 
     <TextView
         android:id="@+id/cpTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="505dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="476dp"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cpImgView"
+        android:text="Mate in 1"
+        app:layout_constraintStart_toEndOf="@+id/cpImg"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/fenImgView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/fen_white" />
-
-    <Button
-        android:id="@+id/evaluateBtn"
-        android:layout_width="150dp"
-        android:layout_height="125dp"
-        android:background="@drawable/evaluate_board"
-        android:onClick="onEvaluate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <!--<ImageView-->
+        <!--android:id="@+id/fenImgView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="5dp"-->
+        <!--android:layout_marginBottom="150dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:srcCompat="@drawable/fen_white" />-->
 
     <!--
         <TextView
@@ -777,16 +780,25 @@
     -->
 
     <Button
+        android:id="@+id/evaluateBtn"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:background="@drawable/evaluate_board"
+        android:onClick="onEvaluate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
         android:id="@+id/NextMoveBtn"
         android:layout_width="100dp"
         android:layout_height="120dp"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/next_move"
-        android:text="\n\nd7d5"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:text="d5e6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
