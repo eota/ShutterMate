@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:text="ShutterMate"
+        android:textSize="40dp"
+        android:textColor="@android:color/black"
+        android:paddingTop="20dp"
+        android:alpha="0"/>
+
+    <ImageView
+        android:id="@+id/knight_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/welcomeText"
+        android:paddingTop="70dp"
+        android:adjustViewBounds="true"
+        android:alpha="0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cameraButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="false"
+            android:layout_weight="0.5"
+            android:layout_margin="10dp"
+            android:text="Camera"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="camera"
+            android:alpha="0"
+            />
+
+        <Button
+            android:id="@+id/savedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.5"
+            android:layout_margin="10dp"
+            android:text="Saved Boards"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="savedBoards"
+            android:alpha="0"
+            />
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -89,4 +171,4 @@
         ads:layout_constraintBottom_toBottomOf="@+id/button"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.doubleclick.PublisherAdView>
-</android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>-->

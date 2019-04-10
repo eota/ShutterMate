@@ -1,6 +1,8 @@
 package com.example.android.camera2basic;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -52,7 +54,11 @@ import com.android.volley.toolbox.Volley;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -577,39 +583,56 @@ public class DigitalBoardActivity extends AppCompatActivity {
     }
 
     public void saveBoardState(View view){
+        //create alert dialog builder for board state name
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View dialogView = getLayoutInflater().inflate(R.layout.boardstate_name_dialog, null);
+        //give dialog the designed view with edit text
+        final View dialogView = getLayoutInflater().inflate(R.layout.boardstate_name_dialog, null);
+        //enable OK button
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
+        //enable cancel button
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                hideKeyboardFrom(getApplicationContext(), dialogView);
                 dialogInterface.dismiss();
             }
         });
+        //set builder to view
         builder.setView(dialogView);
+        //initialize edit text to the current time for default name
         final EditText nameEdit = dialogView.findViewById(R.id.boardNameText);
+        nameEdit.setText(getCurrentTime());
+        nameEdit.setSelectAllOnFocus(true);
+        //create and show dialog box
         final AlertDialog dialog = builder.create();
         dialog.show();
+        //open keyboard
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+        //set logic for "OK" button
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = nameEdit.getText().toString();
                 SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
                         "savedBoards", Context.MODE_PRIVATE);
+                //if name already exists show error toast and leave dialog open
                 if(sharedPref.contains(name)){
                     Toast toast = Toast.makeText(getApplicationContext(), "Board Name Already Exists", Toast.LENGTH_SHORT);
                     toast.show();
                 }
+                //if name is unique commit it to the shared preferences and close the dialog box
                 else{
                     SharedPreferences.Editor editor = sharedPref.edit();
                     String fen = getFen();
                     editor.putString(name, fen);
                     editor.commit();
+                    hideKeyboardFrom(getApplicationContext(), dialogView);
                     dialog.dismiss();
                 }
             }
@@ -617,6 +640,17 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     }
 
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static String getCurrentTime() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat simpleFormat = new SimpleDateFormat("h:mm a, MM/dd/yyyy");
+        String timeString = simpleFormat.format(cal.getTime());
+        return timeString;
+    }
 
     public void showFromIdChar(Integer square, Character piece){
         ImageView newPiece = new ImageView(DigitalBoardActivity.this);
