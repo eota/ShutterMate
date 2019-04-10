@@ -1,7 +1,11 @@
 package com.example.android.camera2basic;
 
+import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -14,16 +18,20 @@ import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -133,7 +141,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     private boolean wk;
     private boolean bq;
     private boolean bk;
-
+    private String m_Text;
     private LineView lv;
 
     @Override
@@ -185,11 +193,10 @@ public class DigitalBoardActivity extends AppCompatActivity {
         squareIds = new Hashtable<>();
         squareChars = new Hashtable<>();
         String fen;
+        //use second when loading directly (for testing)
         fen = getIntent().getExtras().getString("boardstate");
         //fen = "r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5";
         setFromFEN(fen);
-//        text.setText("Boardsta
-// te set!");
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -342,7 +349,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
 //        fenView.setText(getFen());
     }
 
-   public String getFen(){
+    public String getFen(){
         String fen = "";
         Integer counter = 0;
         String square;
@@ -408,7 +415,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
-        String url ="http://100.64.112.41:8080/nextMove?fen=";
+        String url ="http://" + getString(R.string.ip_address) + "/nextMove?fen=";
         url = url + fen;
         url = url + "%20w%20";
         if(wk){
@@ -455,7 +462,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String fen = getFen();
         Log.d("white", fen);
-        String url ="http://100.64.112.41:8080/nextMove?fen=";
+        String url ="http://" + getString(R.string.ip_address) + "/nextMove?fen=";
         url = url + fen;
         url = url + "%20b%20";
         if(wk){
@@ -521,9 +528,6 @@ public class DigitalBoardActivity extends AppCompatActivity {
         setFenTxt();
     }
 
-//    public void evaluate(View v){
-//        getBestMoveBlack();
-//    }
 
     public void setFromFEN(String fen){
         String[] arr = fen.split("/");
@@ -570,6 +574,47 @@ public class DigitalBoardActivity extends AppCompatActivity {
     public void showFromStringChar(String squareStr, Character piece){
         Integer square = getResId(squareStr, R.id.class);
         showFromIdChar(square, piece);
+    }
+
+    public void saveBoardState(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.boardstate_name_dialog, null);
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setView(dialogView);
+        final EditText nameEdit = dialogView.findViewById(R.id.boardNameText);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = nameEdit.getText().toString();
+                SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
+                        "savedBoards", Context.MODE_PRIVATE);
+                if(sharedPref.contains(name)){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Board Name Already Exists", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                else{
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    String fen = getFen();
+                    editor.putString(name, fen);
+                    editor.commit();
+                    dialog.dismiss();
+                }
+            }
+        });
+
     }
 
 

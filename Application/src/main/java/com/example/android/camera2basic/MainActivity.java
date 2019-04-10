@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     public void camera(View view){
         Intent i = new Intent(getApplicationContext(), CameraActivity.class);
         startActivity(i);
-
+    }
+    public void savedBoards(View view){
+        Intent i = new Intent(getApplicationContext(), SavedBoardsActivity.class);
+        startActivity(i);
     }
 }
