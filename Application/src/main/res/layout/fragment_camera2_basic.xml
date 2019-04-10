@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             style="@android:style/Widget.Material.Light.Button.Borderless"
-            android:src="@drawable/picture_icon" />
+            android:src="@drawable/shuttermate_icon_round" />
 
         <ImageButton
             android:id="@+id/info"
