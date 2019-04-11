@@ -34,10 +34,10 @@
         android:alpha="0"/>
 
     <LinearLayout
+        android:id="@+id/buttonsLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="100dp"
         android:orientation="horizontal">
 
         <Button

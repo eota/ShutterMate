@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
@@ -26,26 +27,34 @@ public class MainActivity extends AppCompatActivity {
         //size knight relative to screen size
         DisplayMetrics display = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(display);
-        int screenWidth = display.widthPixels;
+        //int screenWidth = display.widthPixels;
         int screenHeight = display.heightPixels;
-        double knightWidth = screenWidth/1.7;
-        double knightHeight = screenHeight/1.7;
         Bitmap knight = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.black_knight);
-        Bitmap resizedKnight = Bitmap.createScaledBitmap(knight, (int)knightWidth, (int)knightHeight, true);
+        double oldKnightHeight = knight.getHeight();
+        double oldKnightWidth = knight.getWidth();
+        //set the height of the knight relative to the screen size
+        double newKnightHeight = screenHeight/1.7;
+        //find the amount the knight was scaled down (or up) to multiply the width by -- to maintain aspect ratio
+        double knightScale = newKnightHeight/oldKnightHeight;
+        double newKnightWidth = oldKnightWidth * knightScale;
+        Bitmap resizedKnight = Bitmap.createScaledBitmap(knight, (int)newKnightWidth, (int)newKnightHeight, true);
         //set imageView to the knight
         ImageView imageView = findViewById(R.id.knight_img);
         imageView.setImageBitmap(resizedKnight);
-        //animating the title
+        //set padding of buttons
+        LinearLayout buttonsLayout = findViewById(R.id.buttonsLinearLayout);
+        buttonsLayout.setPadding(0,0, 0, screenHeight/10);
+        //animate the title
         TextView title = findViewById(R.id.welcomeText);
-        title.animate().alpha(1f).setDuration(1000).setStartDelay(500);
-        //animating the imageview
-        imageView.animate().alpha(1f).translationYBy(-100).setDuration(1000).setStartDelay(500);
-        //animating the buttons
+        title.animate().alpha(1f).setDuration(500).setStartDelay(100);
+        //animate the image view
+        imageView.animate().alpha(1f).translationYBy(-100).setDuration(500).setStartDelay(100);
+        //animate the buttons
         Button cameraButton = findViewById(R.id.cameraButton);
         Button savedButton = findViewById(R.id.savedButton);
-        cameraButton.animate().alpha(1f).setDuration(1000).setStartDelay(500);
-        savedButton.animate().alpha(1f).setDuration(1000).setStartDelay(500);
+        cameraButton.animate().alpha(1f).setDuration(500).setStartDelay(100);
+        savedButton.animate().alpha(1f).setDuration(500).setStartDelay(100);
         /*mPublisherAdView = findViewById(R.id.publisherAdView);
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
         mPublisherAdView.loadAd(adRequest);*/
