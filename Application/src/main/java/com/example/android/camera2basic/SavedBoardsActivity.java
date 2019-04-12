@@ -34,7 +34,14 @@ public class SavedBoardsActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
                 "savedBoards", Context.MODE_PRIVATE);
         final Map<String, ?> savedBoards = sharedPref.getAll();
-
+        //for testing purposes
+        if (savedBoards.size() == 0){
+            SharedPreferences.Editor editor = sharedPref.edit();
+            String fen = "r4bkr/ppp3pp/2n1b3/3B4/8/3P4/PPP3pP/RNB1KR2 w - - 0 5";
+            editor.putString("test", fen);
+            editor.commit();
+        }
+        //remove in prod
         for (Map.Entry<String, ?> entry : savedBoards.entrySet()){
             list.add(entry.getKey());
         }
