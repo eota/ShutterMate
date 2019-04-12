@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         //int screenWidth = display.widthPixels;
         int screenHeight = display.heightPixels;
         Bitmap knight = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.dark_blue_outline_knight);
+                R.drawable.white_knight);
         double oldKnightHeight = knight.getHeight();
         double oldKnightWidth = knight.getWidth();
         //set the height of the knight relative to the screen size
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         title.animate().alpha(1f).setDuration(500).setStartDelay(100);
         //animate the image view
         imageView.animate().alpha(1f).translationYBy(-100).setDuration(500).setStartDelay(100);
-        //set padding of buttons
+        //set bottom padding of buttons
         LinearLayout buttonsLayout = findViewById(R.id.buttonsLinearLayout);
         buttonsLayout.setPadding(0,0, 0, screenHeight/35);
         //animate the buttons
@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         mPublisherAdView.loadAd(adRequest);*/
     }
     public void camera(View view){
-        Intent i = new Intent(getApplicationContext(), CameraActivity.class);
+        //Intent i = new Intent(getApplicationContext(), CameraActivity.class);
+        Intent i = new Intent(getApplicationContext(), NewDigitalBoardActivity.class);
         startActivity(i);
     }
     public void savedBoards(View view){
