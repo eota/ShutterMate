@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#212121"
     tools:context=".MainActivity">
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,9 +19,9 @@
         android:layout_alignParentTop="true"
         android:gravity="center_horizontal"
         android:text="ShutterMate"
-        android:textSize="40dp"
-        android:textColor="@android:color/black"
-        android:paddingTop="20dp"
+        android:textSize="60dp"
+        android:textStyle="bold"
+        android:textColor="@color/lightGrey"
         android:alpha="0"/>
 
     <ImageView
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_below="@id/welcomeText"
-        android:paddingTop="70dp"
+        android:paddingTop="90dp"
         android:adjustViewBounds="true"
         android:alpha="0"/>
 
@@ -46,8 +47,10 @@
             android:layout_height="70dp"
             android:layout_alignParentTop="false"
             android:layout_weight="0.5"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="Camera"
+            android:textColor="@color/lightGrey"
             android:background="@drawable/start_buttons"
             android:textSize="18dp"
             android:onClick="camera"
@@ -59,8 +62,10 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="0.5"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="Saved Boards"
+            android:textColor="@color/lightGrey"
             android:background="@drawable/start_buttons"
             android:textSize="18dp"
             android:onClick="savedBoards"

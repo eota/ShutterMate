@@ -19,4 +19,6 @@
     <color name="red">#ff0000</color>
     <color name="lightSquare">#efd8b4</color>
     <color name="darkSquare">#b48763</color>
+    <color name="lightGrey">#e1e1e1</color>
+    <color name="blueAccent">#007aff</color>
 </resources>

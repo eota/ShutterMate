@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         //int screenWidth = display.widthPixels;
         int screenHeight = display.heightPixels;
         Bitmap knight = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.black_knight);
+                R.drawable.dark_blue_outline_knight);
         double oldKnightHeight = knight.getHeight();
         double oldKnightWidth = knight.getWidth();
         //set the height of the knight relative to the screen size
@@ -42,14 +42,16 @@ public class MainActivity extends AppCompatActivity {
         //set imageView to the knight
         ImageView imageView = findViewById(R.id.knight_img);
         imageView.setImageBitmap(resizedKnight);
-        //set padding of buttons
-        LinearLayout buttonsLayout = findViewById(R.id.buttonsLinearLayout);
-        buttonsLayout.setPadding(0,0, 0, screenHeight/10);
-        //animate the title
+        //set padding on title
         TextView title = findViewById(R.id.welcomeText);
+        title.setPadding(0,screenHeight/35, 0, 0);
+        //animate the title
         title.animate().alpha(1f).setDuration(500).setStartDelay(100);
         //animate the image view
         imageView.animate().alpha(1f).translationYBy(-100).setDuration(500).setStartDelay(100);
+        //set padding of buttons
+        LinearLayout buttonsLayout = findViewById(R.id.buttonsLinearLayout);
+        buttonsLayout.setPadding(0,0, 0, screenHeight/35);
         //animate the buttons
         Button cameraButton = findViewById(R.id.cameraButton);
         Button savedButton = findViewById(R.id.savedButton);
