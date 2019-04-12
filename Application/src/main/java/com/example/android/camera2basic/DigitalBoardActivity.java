@@ -194,7 +194,7 @@ public class DigitalBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_old_digitalboard);
+        setContentView(R.layout.activity_digital_board);
 //        TextView text = findViewById(R.id.activeFen);
         squareIds = new Hashtable<>();
         squareChars = new Hashtable<>();
