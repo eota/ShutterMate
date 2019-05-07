@@ -7,6 +7,13 @@
     android:background="#212121"
     tools:context=".MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/HeaderBar"
+        android:elevation="4dp" />
+
     <!--board-->
     <RelativeLayout
         android:id="@+id/piecesContainer"
@@ -1170,4 +1177,78 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boardCameraButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="false"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Camera"
+            android:textColor="@color/lightGrey"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="camera"
+            />
+
+        <Button
+            android:id="@+id/boardSavedButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Saved Boards"
+            android:textColor="@color/lightGrey"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="savedBoards"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsLinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonsLinearLayout"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boardEditButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="false"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Edit"
+            android:textColor="@color/lightGrey"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="camera"
+            />
+
+        <Button
+            android:id="@+id/boardNextMoveButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Next Move"
+            android:textColor="@color/lightGrey"
+            android:background="@drawable/start_buttons"
+            android:textSize="18dp"
+            android:onClick="savedBoards"
+            />
+    </LinearLayout>
 </RelativeLayout>
