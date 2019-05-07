@@ -7,7 +7,589 @@
     android:background="#212121"
     tools:context=".MainActivity">
 
+    <!--board-->
+    <RelativeLayout
+        android:id="@+id/piecesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/piecesWrapper"
+            android:layout_marginTop="65dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/rank1Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h8Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/rank2Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h7Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank3Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h6Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank4Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h5Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank5Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h4Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank6Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h3Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank7Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h2Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rank8Pieces"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/a1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/b1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/c1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/d1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/e1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/f1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/g1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/control_background"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/h1Piece"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@color/lightGrey"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--pieces-->
     <RelativeLayout
         android:id="@+id/boardContainer"
         android:layout_width="match_parent"
@@ -30,7 +612,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_rdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b8"
@@ -38,7 +620,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_ndt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c8"
@@ -46,7 +628,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_bdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d8"
@@ -54,7 +636,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_qdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e8"
@@ -62,7 +644,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_kdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f8"
@@ -70,7 +652,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_bdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g8"
@@ -78,7 +660,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_ndt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h8"
@@ -86,7 +668,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_rdt60"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -101,7 +683,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b7"
@@ -109,7 +691,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c7"
@@ -117,7 +699,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d7"
@@ -125,7 +707,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e7"
@@ -133,7 +715,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f7"
@@ -141,7 +723,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g7"
@@ -149,7 +731,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h7"
@@ -157,7 +739,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_pdt60"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -172,7 +754,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b6"
@@ -180,7 +762,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c6"
@@ -188,7 +770,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d6"
@@ -196,7 +778,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e6"
@@ -204,7 +786,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f6"
@@ -212,7 +794,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g6"
@@ -220,7 +802,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h6"
@@ -228,7 +810,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -243,7 +825,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b5"
@@ -251,7 +833,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c5"
@@ -259,7 +841,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d5"
@@ -267,7 +849,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e5"
@@ -275,7 +857,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f5"
@@ -283,7 +865,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g5"
@@ -291,7 +873,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h5"
@@ -299,7 +881,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -314,7 +896,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b4"
@@ -322,7 +904,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c4"
@@ -330,7 +912,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d4"
@@ -338,7 +920,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e4"
@@ -346,7 +928,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f4"
@@ -354,7 +936,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g4"
@@ -362,7 +944,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h4"
@@ -370,7 +952,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -385,7 +967,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b3"
@@ -393,7 +975,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c3"
@@ -401,7 +983,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d3"
@@ -409,7 +991,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e3"
@@ -417,7 +999,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f3"
@@ -425,7 +1007,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g3"
@@ -433,7 +1015,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h3"
@@ -441,7 +1023,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -456,7 +1038,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b2"
@@ -464,7 +1046,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c2"
@@ -472,7 +1054,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d2"
@@ -480,7 +1062,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e2"
@@ -488,7 +1070,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f2"
@@ -496,7 +1078,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g2"
@@ -504,7 +1086,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h2"
@@ -512,7 +1094,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_plt60"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -527,7 +1109,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_rlt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b1"
@@ -535,7 +1117,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_nlt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c1"
@@ -543,7 +1125,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_blt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d1"
@@ -551,7 +1133,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_qlt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e1"
@@ -559,7 +1141,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_klt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f1"
@@ -567,7 +1149,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_blt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g1"
@@ -575,7 +1157,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/lightSquare"
+                    app:srcCompat="@drawable/chess_nlt60"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h1"
@@ -583,12 +1165,9 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@color/darkSquare"
+                    app:srcCompat="@drawable/chess_rlt60"
                     android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-
-
-
 </RelativeLayout>
