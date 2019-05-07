@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void camera(View view){
         //Intent i = new Intent(getApplicationContext(), CameraActivity.class);
-        Intent i = new Intent(getApplicationContext(), NewDigitalBoardActivity.class);
+        Intent i = new Intent(getApplicationContext(), DigitalBoardActivity.class);
         startActivity(i);
     }
     public void savedBoards(View view){
