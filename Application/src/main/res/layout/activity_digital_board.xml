@@ -27,12 +27,12 @@
             android:layout_weight="1"
             android:orientation="vertical">
             <LinearLayout
-                android:id="@+id/rank1Pieces"
+                android:id="@+id/rank1Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a8Piece"
+                    android:id="@+id/a8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -40,7 +40,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b8Piece"
+                    android:id="@+id/b8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -48,7 +48,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c8Piece"
+                    android:id="@+id/c8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -56,7 +56,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d8Piece"
+                    android:id="@+id/d8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -64,7 +64,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e8Piece"
+                    android:id="@+id/e8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -72,7 +72,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f8Piece"
+                    android:id="@+id/f8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -80,7 +80,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g8Piece"
+                    android:id="@+id/g8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -88,7 +88,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h8Piece"
+                    android:id="@+id/h8Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -98,12 +98,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank2Pieces"
+                android:id="@+id/rank2Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a7Piece"
+                    android:id="@+id/a7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -111,7 +111,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b7Piece"
+                    android:id="@+id/b7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -119,7 +119,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c7Piece"
+                    android:id="@+id/c7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -127,7 +127,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d7Piece"
+                    android:id="@+id/d7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -135,7 +135,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e7Piece"
+                    android:id="@+id/e7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -143,7 +143,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f7Piece"
+                    android:id="@+id/f7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -151,7 +151,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g7Piece"
+                    android:id="@+id/g7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -159,7 +159,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h7Piece"
+                    android:id="@+id/h7Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -169,12 +169,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank3Pieces"
+                android:id="@+id/rank3Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a6Piece"
+                    android:id="@+id/a6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -182,7 +182,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b6Piece"
+                    android:id="@+id/b6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -190,7 +190,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c6Piece"
+                    android:id="@+id/c6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -198,7 +198,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d6Piece"
+                    android:id="@+id/d6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -206,7 +206,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e6Piece"
+                    android:id="@+id/e6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -214,7 +214,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f6Piece"
+                    android:id="@+id/f6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -222,7 +222,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g6Piece"
+                    android:id="@+id/g6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -230,7 +230,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h6Piece"
+                    android:id="@+id/h6Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -240,12 +240,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank4Pieces"
+                android:id="@+id/rank4Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a5Piece"
+                    android:id="@+id/a5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -253,7 +253,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b5Piece"
+                    android:id="@+id/b5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -261,7 +261,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c5Piece"
+                    android:id="@+id/c5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -269,7 +269,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d5Piece"
+                    android:id="@+id/d5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -277,7 +277,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e5Piece"
+                    android:id="@+id/e5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -285,7 +285,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f5Piece"
+                    android:id="@+id/f5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -293,7 +293,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g5Piece"
+                    android:id="@+id/g5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -301,7 +301,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h5Piece"
+                    android:id="@+id/h5Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -311,12 +311,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank5Pieces"
+                android:id="@+id/rank5Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a4Piece"
+                    android:id="@+id/a4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -324,7 +324,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b4Piece"
+                    android:id="@+id/b4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -332,7 +332,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c4Piece"
+                    android:id="@+id/c4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -340,7 +340,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d4Piece"
+                    android:id="@+id/d4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -348,7 +348,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e4Piece"
+                    android:id="@+id/e4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -356,7 +356,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f4Piece"
+                    android:id="@+id/f4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -364,7 +364,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g4Piece"
+                    android:id="@+id/g4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -372,7 +372,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h4Piece"
+                    android:id="@+id/h4Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -382,12 +382,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank6Pieces"
+                android:id="@+id/rank6Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a3Piece"
+                    android:id="@+id/a3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -395,7 +395,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b3Piece"
+                    android:id="@+id/b3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -403,7 +403,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c3Piece"
+                    android:id="@+id/c3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -411,7 +411,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d3Piece"
+                    android:id="@+id/d3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -419,7 +419,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e3Piece"
+                    android:id="@+id/e3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -427,7 +427,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f3Piece"
+                    android:id="@+id/f3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -435,7 +435,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g3Piece"
+                    android:id="@+id/g3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -443,7 +443,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h3Piece"
+                    android:id="@+id/h3Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -453,12 +453,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank7Pieces"
+                android:id="@+id/rank7Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a2Piece"
+                    android:id="@+id/a2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -466,7 +466,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b2Piece"
+                    android:id="@+id/b2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -474,7 +474,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c2Piece"
+                    android:id="@+id/c2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -482,7 +482,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d2Piece"
+                    android:id="@+id/d2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -490,7 +490,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e2Piece"
+                    android:id="@+id/e2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -498,7 +498,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f2Piece"
+                    android:id="@+id/f2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -506,7 +506,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g2Piece"
+                    android:id="@+id/g2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -514,7 +514,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h2Piece"
+                    android:id="@+id/h2Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -524,12 +524,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rank8Pieces"
+                android:id="@+id/rank8Squares"
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:id="@+id/a1Piece"
+                    android:id="@+id/a1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -537,7 +537,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/b1Piece"
+                    android:id="@+id/b1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -545,7 +545,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/c1Piece"
+                    android:id="@+id/c1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -553,7 +553,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/d1Piece"
+                    android:id="@+id/d1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -561,7 +561,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/e1Piece"
+                    android:id="@+id/e1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -569,7 +569,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/f1Piece"
+                    android:id="@+id/f1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -577,7 +577,7 @@
                     app:srcCompat="@color/lightGrey"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/g1Piece"
+                    android:id="@+id/g1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -585,7 +585,7 @@
                     app:srcCompat="@color/control_background"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:id="@+id/h1Piece"
+                    android:id="@+id/h1Square"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -619,7 +619,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_rdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b8"
@@ -627,7 +627,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_ndt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c8"
@@ -635,7 +635,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_bdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d8"
@@ -643,7 +643,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_qdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e8"
@@ -651,7 +651,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_kdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f8"
@@ -659,7 +659,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_bdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g8"
@@ -667,7 +667,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_ndt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h8"
@@ -675,7 +675,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_rdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -690,7 +690,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b7"
@@ -698,7 +698,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c7"
@@ -706,7 +706,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d7"
@@ -714,7 +714,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e7"
@@ -722,7 +722,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f7"
@@ -730,7 +730,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g7"
@@ -738,7 +738,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h7"
@@ -746,7 +746,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_pdt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -1045,7 +1045,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b2"
@@ -1053,7 +1053,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c2"
@@ -1061,7 +1061,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d2"
@@ -1069,7 +1069,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e2"
@@ -1077,7 +1077,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f2"
@@ -1085,7 +1085,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g2"
@@ -1093,7 +1093,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h2"
@@ -1101,7 +1101,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_plt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
 
@@ -1116,7 +1116,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_rlt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/b1"
@@ -1124,7 +1124,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_nlt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/c1"
@@ -1132,7 +1132,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_blt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/d1"
@@ -1140,7 +1140,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_qlt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/e1"
@@ -1148,7 +1148,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_klt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/f1"
@@ -1156,7 +1156,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_blt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/g1"
@@ -1164,7 +1164,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_nlt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
                 <ImageView
                     android:id="@+id/h1"
@@ -1172,7 +1172,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/chess_rlt60"
+                    app:srcCompat="@drawable/empty"
                     android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
