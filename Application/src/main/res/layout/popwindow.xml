@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:onClick="brook"
-        app:srcCompat="@drawable/chess_rdt60" />
+        app:srcCompat="@drawable/chess_rdt" />
 
     <ImageView
         android:id="@+id/bknight"
@@ -19,7 +19,7 @@
         android:layout_height="150px"
         android:layout_toRightOf="@id/brook"
         android:onClick="bknight"
-        app:srcCompat="@drawable/chess_ndt60" />
+        app:srcCompat="@drawable/chess_ndt" />
 
     <ImageView
         android:id="@+id/bbishop"
@@ -27,7 +27,7 @@
         android:layout_height="150px"
         android:layout_toRightOf="@id/bknight"
         android:onClick="bbishop"
-        app:srcCompat="@drawable/chess_bdt60" />
+        app:srcCompat="@drawable/chess_bdt" />
 
     <ImageView
         android:id="@+id/bqueen"
@@ -35,7 +35,7 @@
         android:layout_height="150px"
         android:layout_toRightOf="@id/bbishop"
         android:onClick="bqueen"
-        app:srcCompat="@drawable/chess_qdt60" />
+        app:srcCompat="@drawable/chess_qdt" />
 
     <ImageView
         android:id="@+id/bking"
@@ -43,7 +43,7 @@
         android:layout_height="150px"
         android:layout_toRightOf="@id/bqueen"
         android:onClick="bking"
-        app:srcCompat="@drawable/chess_kdt60" />
+        app:srcCompat="@drawable/chess_kdt" />
 
     <ImageView
         android:id="@+id/bpawn"
@@ -51,7 +51,7 @@
         android:layout_height="150px"
         android:layout_toRightOf="@id/bking"
         android:onClick="bpawn"
-        app:srcCompat="@drawable/chess_pdt60" />
+        app:srcCompat="@drawable/chess_pdt" />
 
     <ImageView
         android:id="@+id/wrook"
@@ -60,7 +60,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:onClick="wrook"
-        app:srcCompat="@drawable/chess_rlt60" />
+        app:srcCompat="@drawable/chess_rlt" />
 
     <ImageView
         android:id="@+id/wknight"
@@ -69,7 +69,7 @@
         android:layout_toRightOf="@id/wrook"
         android:layout_alignParentBottom="true"
         android:onClick="wknight"
-        app:srcCompat="@drawable/chess_nlt60" />
+        app:srcCompat="@drawable/chess_nlt" />
 
     <ImageView
         android:id="@+id/wbishop"
@@ -78,7 +78,7 @@
         android:layout_toRightOf="@id/wknight"
         android:layout_alignParentBottom="true"
         android:onClick="wbishop"
-        app:srcCompat="@drawable/chess_blt60" />
+        app:srcCompat="@drawable/chess_blt" />
 
     <ImageView
         android:id="@+id/wqueen"
@@ -87,7 +87,7 @@
         android:layout_toRightOf="@id/wbishop"
         android:layout_alignParentBottom="true"
         android:onClick="wqueen"
-        app:srcCompat="@drawable/chess_qlt60" />
+        app:srcCompat="@drawable/chess_qlt" />
 
     <ImageView
         android:id="@+id/wking"
@@ -96,7 +96,7 @@
         android:layout_toRightOf="@id/wqueen"
         android:layout_alignParentBottom="true"
         android:onClick="wking"
-        app:srcCompat="@drawable/chess_klt60" />
+        app:srcCompat="@drawable/chess_klt" />
 
     <ImageView
         android:id="@+id/wpawn"
@@ -105,7 +105,7 @@
         android:layout_toRightOf="@id/wking"
         android:layout_alignParentBottom="true"
         android:onClick="wpawn"
-        app:srcCompat="@drawable/chess_plt60" />
+        app:srcCompat="@drawable/chess_plt" />
 
     <ImageView
         android:id="@+id/x"

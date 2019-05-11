@@ -38,47 +38,47 @@ public class DigitalBoardActivity extends AppCompatActivity {
             this.piece = piece;
             switch (piece){
                 case 'r':
-                    pieceImageView.setImageResource(R.drawable.chess_rdt60);
+                    pieceImageView.setImageResource(R.drawable.chess_rdt);
                     break;
                 case 'n':
-                    pieceImageView.setImageResource(R.drawable.chess_ndt60);
+                    pieceImageView.setImageResource(R.drawable.chess_ndt);
                     break;
                 case 'b':
-                    pieceImageView.setImageResource(R.drawable.chess_bdt60);
+                    pieceImageView.setImageResource(R.drawable.chess_bdt);
                     break;
                 case 'q':
-                    pieceImageView.setImageResource(R.drawable.chess_qdt60);
+                    pieceImageView.setImageResource(R.drawable.chess_qdt);
                     break;
                 case 'k':
-                    pieceImageView.setImageResource(R.drawable.chess_kdt60);
+                    pieceImageView.setImageResource(R.drawable.chess_kdt);
                     break;
                 case 'p':
-                    pieceImageView.setImageResource(R.drawable.chess_pdt60);
+                    pieceImageView.setImageResource(R.drawable.chess_pdt);
                     break;
                 case 'R':
-                    pieceImageView.setImageResource(R.drawable.chess_rlt60);
+                    pieceImageView.setImageResource(R.drawable.chess_rlt);
                     break;
                 case 'N':
-                    pieceImageView.setImageResource(R.drawable.chess_nlt60);
+                    pieceImageView.setImageResource(R.drawable.chess_nlt);
                     break;
                 case 'B':
-                    pieceImageView.setImageResource(R.drawable.chess_blt60);
+                    pieceImageView.setImageResource(R.drawable.chess_blt);
                     break;
                 case 'Q':
-                    pieceImageView.setImageResource(R.drawable.chess_qlt60);
+                    pieceImageView.setImageResource(R.drawable.chess_qlt);
                     break;
                 case 'K':
-                    pieceImageView.setImageResource(R.drawable.chess_klt60);
+                    pieceImageView.setImageResource(R.drawable.chess_klt);
                     break;
                 case 'P':
-                    pieceImageView.setImageResource(R.drawable.chess_plt60);
+                    pieceImageView.setImageResource(R.drawable.chess_plt);
                     break;
                 default:
                     pieceImageView.setImageResource(R.drawable.empty);
             }
         }
 
-        public int getPiece() {
+        public char getPiece() {
             return piece;
         }
 
@@ -124,14 +124,28 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
         public Board() {
             board = new Hashtable<>();
+            for (char i = 'a'; i <= 'h'; i++){
+                for (int j = 1; j <= 8; j++){
+                    String squareName = "" + i + j;
+                    int pieceID = getResources().getIdentifier(squareName, "id", getPackageName());
+                    int squareID = getResources().getIdentifier( squareName + "Square", "id", getPackageName());
+                    final ImageView pieceView = findViewById(pieceID);
+                    final ImageView squareView = findViewById(squareID);
+                    PieceSquare piece = new PieceSquare(squareName, pieceView, squareView);
+                    piece.setOnClickListener();
+                    board.put(squareName, piece);
+                }
+            }
         }
 
         public void highlight(PieceSquare piece) {
+            unhighlight();
             piece.highlight();
             highlighted = piece;
         }
 
         public void highlight(String squareName) {
+            unhighlight();
             PieceSquare piece = board.get(squareName);
             piece.highlight();
             highlighted = piece;
@@ -148,6 +162,78 @@ public class DigitalBoardActivity extends AppCompatActivity {
             highlighted = null;
         }
 
+        public void unhighlight() {
+            if (highlighted != null) {
+                highlighted.unhighlight();
+                highlighted = null;
+            }
+        }
+
+        public void wipe(String squareName) {
+            PieceSquare piece = board.get(squareName);
+            piece.wipe();
+        }
+
+        public void wipe(PieceSquare pieceSquare) {
+            pieceSquare.wipe();
+        }
+
+        public void setPiece(String squareName, char piece) {
+            board.get(squareName).setPiece(piece);
+        }
+
+        public void setPiece(PieceSquare pieceSquare, char piece) {
+            pieceSquare.setPiece(piece);
+        }
+
+        public char getPiece(String squareName) {
+            return board.get(squareName).getPiece();
+        }
+
+        public char getPiece(PieceSquare pieceSquare) {
+            return pieceSquare.getPiece();
+        }
+
+        public void setFromFEN(String fen) {
+            String[] arr = fen.split("/");
+            Character column;
+            String[] rowChars;
+            Integer row = 8;
+            //for each row in the fen code
+            for (int i = 1; i < 9; i++){
+                column = 'a';
+                rowChars = arr[i - 1].trim().split("");
+                //for each piece in each row
+                for (String piece : rowChars){
+                    PieceSquare pieceSquare = get("" + column + row);
+                    if(column == 'i') {
+                        break;
+                    }
+                    if(piece.length() == 0){
+                        continue;
+                    }
+                    char charPiece = piece.charAt(0);
+                    //if piece is an actual piece (a letter)
+                    if(Character.isLetter(charPiece)){
+                        setPiece(pieceSquare, charPiece);
+                        column++;
+                    }
+                    //if piece is number
+                    if(Character.isDigit(charPiece)){
+                        while(charPiece > '0'){
+                            pieceSquare.wipe();
+                            column++;
+                            charPiece--;
+                        }
+                    }
+                }
+                row--;
+                if (row == 0) {
+                    break;
+                }
+            }
+        }
+
         public PieceSquare get(String squareName) {
             return board.get(squareName);
         }
@@ -162,23 +248,19 @@ public class DigitalBoardActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("result", "in result");
+        board.unhighlight();
         if (requestCode == 1) {
             Log.d("result", "code was 1");
             if (resultCode == RESULT_OK) {
                 Log.d("result", "result ok");
-                Character pieceChar = data.getCharExtra("pieceChar", '0');
-                Integer pieceInt = data.getIntExtra("pieceInt",0);
-                Integer square = data.getIntExtra("squareInt",0);
+                char pieceChar = data.getCharExtra("pieceChar", '0');
+                int pieceInt = data.getIntExtra("pieceInt",0);
                 String squareStr = data.getStringExtra("squareStr");
 
-                PieceSquare pieceSquare = board.get(squareStr);
-
                 if (pieceInt == 0){
-                    pieceSquare.wipe();
-                    board.unhighlight(pieceSquare);
+                    board.wipe(squareStr);
                 } else{
-                    pieceSquare.setPiece(pieceChar);
-                    board.unhighlight(pieceSquare);
+                    board.setPiece(squareStr, pieceChar);
                 }
             }
         }
@@ -213,67 +295,12 @@ public class DigitalBoardActivity extends AppCompatActivity {
         LinearLayout buttonsLayout2 = findViewById(R.id.buttonsLinearLayout2);
         buttonsLayout2.setPadding(0,0, 0, screenHeight/35);
 
-        board = new Board();
         mTopToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(mTopToolbar);
 
-        for (char i = 'a'; i <= 'h'; i++){
-            for (int j = 1; j <= 8; j++){
-                String squareName = "" + i + j;
-                int pieceID = getResources().getIdentifier(squareName, "id", getPackageName());
-                int squareID = getResources().getIdentifier( squareName + "Square", "id", getPackageName());
-                final ImageView pieceView = findViewById(pieceID);
-                final ImageView squareView = findViewById(squareID);
-                PieceSquare piece = new PieceSquare(squareName, pieceView, squareView);
-                piece.setOnClickListener();
-                board.put(squareName, piece);
-            }
-        }
-
+        board = new Board();
         String fen = getIntent().getExtras().getString("boardstate");
-        setFromFEN(fen);
-    }
-
-    public void setFromFEN(String fen){
-        String[] arr = fen.split("/");
-        Character column;
-        String[] rowChars;
-        Integer row = 8;
-        //for each row in the fen code
-        for (int i = 1; i < 9; i++){
-            column = 'a';
-            rowChars = arr[i - 1].trim().split("");
-            //for each piece in each row
-            for (String piece : rowChars){
-                PieceSquare pieceSquare = board.get("" + column + row);
-                String square = column.toString() + row;
-                if(column == 'i') {
-                    break;
-                }
-                if(piece.length() == 0){
-                    continue;
-                }
-                char charPiece = piece.charAt(0);
-                //if piece is an actual piece (a letter)
-                if(Character.isLetter(charPiece)){
-                    pieceSquare.setPiece(charPiece);
-                    column++;
-                }
-                //if piece is number
-                if(Character.isDigit(charPiece)){
-                    while(charPiece > '0'){
-                        pieceSquare.wipe();
-                        column++;
-                        charPiece--;
-                        square = column.toString() + row;
-                    }
-                }
-            }
-            row--;
-            if (row == 0) {
-                break;
-            }
-        }
+        board.setFromFEN(fen);
     }
 
     @Override

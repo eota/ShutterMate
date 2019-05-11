@@ -23,7 +23,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'r');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_rdt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_rdt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -34,7 +34,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'n');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_ndt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_ndt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -45,7 +45,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'b');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_bdt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_bdt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -56,7 +56,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'q');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_qdt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_qdt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -67,7 +67,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'k');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_kdt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_kdt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -78,7 +78,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'p');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_pdt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_pdt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -89,7 +89,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'R');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_rlt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_rlt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -100,7 +100,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'N');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_nlt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_nlt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -111,7 +111,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'B');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_blt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_blt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -122,7 +122,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'Q');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_qlt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_qlt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -133,7 +133,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'K');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_klt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_klt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);
@@ -144,7 +144,7 @@ public class Pop extends AppCompatActivity {
         Intent intent = getIntent();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("pieceChar", 'P');
-        resultIntent.putExtra("pieceInt", R.drawable.chess_plt60);
+        resultIntent.putExtra("pieceInt", R.drawable.chess_plt);
         resultIntent.putExtra("squareInt", intent.getIntExtra("squareInt", 0));
         resultIntent.putExtra("squareStr", intent.getStringExtra("squareStr"));
         setResult(Activity.RESULT_OK, resultIntent);

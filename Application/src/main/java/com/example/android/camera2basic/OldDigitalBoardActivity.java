@@ -694,29 +694,29 @@ public class OldDigitalBoardActivity extends AppCompatActivity {
     public Integer charToResource(Character piece){
         switch (piece){
             case 'r':
-                return R.drawable.chess_rdt60;
+                return R.drawable.chess_rdt;
             case 'n':
-                return R.drawable.chess_ndt60;
+                return R.drawable.chess_ndt;
             case 'b':
-                return R.drawable.chess_bdt60;
+                return R.drawable.chess_bdt;
             case 'q':
-                return R.drawable.chess_qdt60;
+                return R.drawable.chess_qdt;
             case 'k':
-                return R.drawable.chess_kdt60;
+                return R.drawable.chess_kdt;
             case 'p':
-                return R.drawable.chess_pdt60;
+                return R.drawable.chess_pdt;
             case 'R':
-                return R.drawable.chess_rlt60;
+                return R.drawable.chess_rlt;
             case 'N':
-                return R.drawable.chess_nlt60;
+                return R.drawable.chess_nlt;
             case 'B':
-                return R.drawable.chess_blt60;
+                return R.drawable.chess_blt;
             case 'Q':
-                return R.drawable.chess_qlt60;
+                return R.drawable.chess_qlt;
             case 'K':
-                return R.drawable.chess_klt60;
+                return R.drawable.chess_klt;
             case 'P':
-                return R.drawable.chess_plt60;
+                return R.drawable.chess_plt;
             default:
                 return 0;
         }
