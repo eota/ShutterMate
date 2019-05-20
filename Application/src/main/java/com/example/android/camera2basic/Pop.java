@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 public class Pop extends AppCompatActivity {
@@ -16,7 +20,18 @@ public class Pop extends AppCompatActivity {
 
         setContentView(R.layout.popwindow);
 
-        getWindow().setLayout(1050,300);
+        DisplayMetrics display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+        int screenWidth = display.widthPixels;
+        int screenHeight = display.heightPixels;
+        double popHeight = screenHeight/3.15;
+        Window window = getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.gravity = Gravity.BOTTOM;
+        params.width = screenWidth;
+        params.height = 300;
+        params.y = (int)popHeight;
+        getWindow().setAttributes(params);
     }
 
     public void brook(View view){

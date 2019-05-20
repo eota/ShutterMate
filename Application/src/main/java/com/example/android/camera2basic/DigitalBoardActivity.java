@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +14,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.util.Hashtable;
 
@@ -241,6 +249,49 @@ public class DigitalBoardActivity extends AppCompatActivity {
         public void put(String squareName, PieceSquare pieceSquare) {
             board.put(squareName, pieceSquare);
         }
+
+        public String getFen(){
+            String fen = "";
+            Integer counter = 0;
+            String square;
+            //for each row
+            for(Integer row = 8; row > 0; row--){
+                //for each column
+                for(Character column = 'a'; column < 'i'; column++){
+                    square = column.toString() + row;
+                    //if the square contains anything
+                    if(this.getPiece(square) != ' '){
+                        //if(squareChars.get(square)!='0') {
+                        //append and then reset the counter
+                        if (counter != 0) {
+                            fen = fen + counter;
+                            counter = 0;
+                        }
+                        //append the piece
+                        fen = fen + this.getPiece(square);
+                       // }
+//                        else{
+//                            counter++;
+//                        }
+                    }
+                    //if the square is empty just increment the counter
+                    else{
+                        counter++;
+                    }
+                }
+                if(counter != 0){
+                    fen = fen + counter;
+                    counter = 0;
+                }
+                if(row > 1) {
+                    fen = fen + '/';
+                }
+            }
+            fen = fen.trim();
+            Log.d("fen", fen);
+            return fen;
+        }
+
     }
 
     private Board board;
@@ -264,27 +315,26 @@ public class DigitalBoardActivity extends AppCompatActivity {
                 }
             }
         }
-//        else if (resultCode == 2){
-//            Boolean wq = data.getBooleanExtra("wqSwitch",true);
-//            Boolean wk = data.getBooleanExtra("wkSwitch",true);
-//            Boolean bq = data.getBooleanExtra("bqSwitch",true);
-//            Boolean bk = data.getBooleanExtra("bkSwitch",true);
-//            Boolean whiteTurn = data.getBooleanExtra("whiteTurn",true);
-//            if (whiteTurn) {
-//                getBestMoveWhite(wq, wk, bq, bk);
-//            } else if (!whiteTurn){
-//                getBestMoveBlack(wq, wk, bq, bk);
-//            } else {
-//                Log.e("turn error: ", "Error finding whose turn");
-//            }
-//        }
+        else if (resultCode == 2){
+            Boolean wq = data.getBooleanExtra("wqSwitch",true);
+            Boolean wk = data.getBooleanExtra("wkSwitch",true);
+            Boolean bq = data.getBooleanExtra("bqSwitch",true);
+            Boolean bk = data.getBooleanExtra("bkSwitch",true);
+            Boolean whiteTurn = data.getBooleanExtra("whiteTurn",true);
+            if (whiteTurn) {
+                getBestMoveWhite(wq, wk, bq, bk);
+            } else if (!whiteTurn){
+                getBestMoveBlack(wq, wk, bq, bk);
+            } else {
+                Log.e("turn error: ", "Error finding whose turn");
+            }
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_board);
-        //size knight relative to screen size
         DisplayMetrics display = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(display);
         int screenWidth = display.widthPixels;
@@ -301,6 +351,101 @@ public class DigitalBoardActivity extends AppCompatActivity {
         board = new Board();
         String fen = getIntent().getExtras().getString("boardstate");
         board.setFromFEN(fen);
+    }
+
+    public void nextMove(View view){
+        Intent i = new Intent(DigitalBoardActivity.this, NextMovePop.class);
+        i.putExtra("squareInt", 1);
+        i.putExtra("squareStr", "square");
+        startActivityForResult(i, 2);
+    }
+
+    public void getBestMoveWhite(boolean wq, boolean wk, boolean bq, boolean bk){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fen = board.getFen();
+        Log.d("white", fen);
+        String url ="http://" + getString(R.string.ip_address) + "/nextMove?fen=";
+        url = url + fen;
+        url = url + "%20w%20";
+        if(wk){
+            url = url + "K";
+        }
+        if(wq){
+            url = url + "Q";
+        }
+        if(bk){
+            url = url + "k";
+        }
+        if(bq){
+            url = url + "q";
+        }
+        if(!wk && !wq && !bk && !bq){
+            url = url + "-";
+        }
+        url = url + "%20-%200%201";
+//        mTextView.setText(url);
+        Log.d("fen url", url);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        //drawLineFromResponse(response);
+                        //fenTxt.setText(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
+    }
+
+    public void getBestMoveBlack(boolean wq, boolean wk, boolean bq, boolean bk){
+//        final TextView mTextView = findViewById(R.id.activeFen);
+//        final TextView fenTxt = findViewById(R.id.fenTextView);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String fen = board.getFen();
+        Log.d("white", fen);
+        String url ="http://" + getString(R.string.ip_address) + "/nextMove?fen=";
+        url = url + fen;
+        url = url + "%20b%20";
+        if(wk){
+            url = url + "K";
+        }
+        if(wq){
+            url = url + "Q";
+        }
+        if(bk){
+            url = url + "k";
+        }
+        if(bq){
+            url = url + "q";
+        }
+        if(!wk && !wq && !bk && !bq){
+            url = url + "-";
+        }
+        url = url + "%20-%200%201";
+//        mTextView.setText(url);
+        Log.d("fen url", url);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("server", response);
+                        //drawLineFromResponse(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                mTextView.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
     }
 
     @Override

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/bking"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:onClick="bking"
+            app:srcCompat="@drawable/chess_kdt" />
+
+            <Switch
+                android:id="@+id/bkingswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/bking"
+                android:checked="true"
+                android:layout_marginTop="15dp" />
+
+        <ImageView
+            android:id="@+id/bqueen"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_toEndOf="@+id/bkingswitch"
+            app:srcCompat="@drawable/chess_qdt" />
+
+        <Switch
+            android:id="@+id/bqueenswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/bqueen"
+            android:checked="true"
+            android:layout_marginTop="15dp"/>
+
+
+
+        <ImageView
+            android:id="@+id/wking"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_alignParentBottom="true"
+            android:onClick="wking"
+            app:srcCompat="@drawable/chess_klt" />
+
+        <Switch
+            android:id="@+id/wkingswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/wking"
+            android:checked="true"
+            android:layout_marginBottom="15dp"/>
+
+        <ImageView
+            android:id="@+id/wqueen"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_toEndOf="@id/wkingswitch"
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@drawable/chess_qlt" />
+
+        <Switch
+            android:id="@+id/wqueenswitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/wqueen"
+            android:checked="true"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/wqueenswitch"
+            android:text="Black to Move"
+            android:onClick="blackMove"/>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/wqueenswitch"
+            android:text="White to Move"
+            android:onClick="whiteMove"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

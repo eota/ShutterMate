@@ -16,7 +16,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MaterialTheme">
-        <activity android:name=".NewDigitalBoardActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
@@ -52,6 +51,11 @@
         <activity
             android:name=".Pop"
             android:theme="@style/AppTheme.CustomTheme" />
+
+        <activity
+            android:name=".NextMovePop"
+            android:theme="@style/AppTheme.CustomTheme" />
+
         <activity android:name=".BoardPrefsActivity" />
         <activity
             android:name=".SavedBoardsActivity"

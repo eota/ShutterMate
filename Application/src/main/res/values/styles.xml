@@ -28,6 +28,9 @@
     </style>
 
     <style name="HeaderBar">
-        <item name="android:background">#303F9F</item>
+        <item name="android:background">@color/blueAccent</item>
+        <item name="titleTextColor">@android:color/white</item>
     </style>
+
+
 </resources>
