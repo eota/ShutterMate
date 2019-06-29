@@ -22,5 +22,7 @@
     <color name="lightGrey">#e1e1e1</color>
     <color name="blueAccent">#007aff</color>
     <color name="white">#ffff</color>
+    <color name="black">#000</color>
+    <color name="startButtonText">#000</color>
     <color name="darkGrey">#212121</color>
 </resources>
